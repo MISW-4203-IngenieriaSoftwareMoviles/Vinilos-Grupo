@@ -8,11 +8,10 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vinilos.models.Album
 import com.example.vinilos.R
-import com.example.vinilos.databinding.AlbumItemBinding
-import com.example.vinilos.models.Album
+import com.example.vinilos.databinding.DetailAlbumFragmentBinding
 import com.example.vinilos.ui.AlbumFragmentDirections
 
-class DetailAlbumAdapter : RecyclerView.Adapter<DetailAlbumAdapter.AlbumViewHolder>(){
+class DetailAlbumAdapter : RecyclerView.Adapter<DetailAlbumAdapter.DetailAlbumViewHolder>(){
 
     var albums :List<Album> = emptyList()
         set(value) {
@@ -20,21 +19,21 @@ class DetailAlbumAdapter : RecyclerView.Adapter<DetailAlbumAdapter.AlbumViewHold
             notifyDataSetChanged()
         }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AlbumViewHolder {
-        val withDataBinding: AlbumItemBinding = DataBindingUtil.inflate(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DetailAlbumViewHolder {
+        val withDataBinding: DetailAlbumFragmentBinding = DataBindingUtil.inflate(
             LayoutInflater.from(parent.context),
-            AlbumViewHolder.LAYOUT,
+            DetailAlbumViewHolder.LAYOUT,
             parent,
             false)
-        return AlbumViewHolder(withDataBinding)
+        return DetailAlbumViewHolder(withDataBinding)
     }
 
-    override fun onBindViewHolder(holder: AlbumViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: DetailAlbumViewHolder, position: Int) {
         holder.viewDataBinding.also {
             it.album = albums[position]
         }
         holder.viewDataBinding.root.setOnClickListener {
-            val action = AlbumFragmentDirections.actionAlbumFragmentToCommentFragment(albums[position].albumId)
+            val action = AlbumFragmentDirections.actionAlbumFragmentToDetailAlbumFragment()
             // Navigate using that action
             holder.viewDataBinding.root.findNavController().navigate(action)
         }
@@ -45,11 +44,11 @@ class DetailAlbumAdapter : RecyclerView.Adapter<DetailAlbumAdapter.AlbumViewHold
     }
 
 
-    class AlbumViewHolder(val viewDataBinding: AlbumItemBinding) :
+    class DetailAlbumViewHolder(val viewDataBinding: DetailAlbumFragmentBinding) :
         RecyclerView.ViewHolder(viewDataBinding.root) {
         companion object {
             @LayoutRes
-            val LAYOUT = R.layout.album_item
+            val LAYOUT = R.layout.detail_album_fragment
         }
     }
 

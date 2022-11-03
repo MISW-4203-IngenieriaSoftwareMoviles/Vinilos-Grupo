@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.vinilos.databinding.AlbumFragmentBinding
 import com.example.vinilos.R
 import com.example.vinilos.models.Album
-import com.example.vinilos.ui.adapters.AlbumsAdapter
+import com.example.vinilos.ui.adapters.AlbumAdapter
 import com.example.vinilos.viewmodels.AlbumViewModel
 
 /**
@@ -34,7 +34,7 @@ class AlbumFragment : Fragment() {
         val view = binding.root
         viewModelAdapter = AlbumAdapter()
         return view
-    }adapters
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         recyclerView = binding.fragmentsRv
@@ -49,9 +49,9 @@ class AlbumFragment : Fragment() {
         }
         activity.actionBar?.title = getString(R.string.title_Albums)
         viewModel = ViewModelProvider(this, AlbumViewModel.Factory(activity.application)).get(AlbumViewModel::class.java)
-        viewModel.Albums.observe(viewLifecycleOwner, Observer<List<Album>> {
+        viewModel.albums.observe(viewLifecycleOwner, Observer<List<Album>> {
             it.apply {
-                viewModelAdapter!!.Albums = this
+                viewModelAdapter!!.albums = this
             }
         })
         viewModel.eventNetworkError.observe(viewLifecycleOwner, Observer<Boolean> { isNetworkError ->

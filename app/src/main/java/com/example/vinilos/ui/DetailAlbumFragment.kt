@@ -10,30 +10,29 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.vinilos.databinding.AlbumsFragmentBinding
-import com.example.vinyls_jetpack_application.R
-import com.example.vinyls_jetpack_application.databinding.AlbumsFragmentBinding
-import com.example.vinyls_jetpack_application.models.Albums
-import com.example.vinyls_jetpack_application.ui.adapters.AlbumssAdapter
-import com.example.vinyls_jetpack_application.viewmodels.AlbumsViewModel
+import com.example.vinilos.databinding.AlbumFragmentBinding
+import com.example.vinilos.R
+import com.example.vinilos.models.Album
+import com.example.vinilos.ui.adapters.AlbumAdapter
+import com.example.vinilos.viewmodels.AlbumViewModel
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
 class DetailAlbumFragment : Fragment() {
-    private var _binding: AlbumsFragmentBinding? = null
+    private var _binding: AlbumFragmentBinding? = null
     private val binding get() = _binding!!
     private lateinit var recyclerView: RecyclerView
-    private lateinit var viewModel: AlbumsViewModel
-    private var viewModelAdapter: AlbumssAdapter? = null
+    private lateinit var viewModel: AlbumViewModel
+    private var viewModelAdapter: AlbumAdapter? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = AlbumsFragmentBinding.inflate(inflater, container, false)
+        _binding = AlbumFragmentBinding.inflate(inflater, container, false)
         val view = binding.root
-        viewModelAdapter = AlbumssAdapter()
+        viewModelAdapter = AlbumAdapter()
         return view
     }
 
@@ -48,11 +47,11 @@ class DetailAlbumFragment : Fragment() {
         val activity = requireNotNull(this.activity) {
             "You can only access the viewModel after onActivityCreated()"
         }
-        activity.actionBar?.title = getString(R.string.title_Albumss)
-        viewModel = ViewModelProvider(this, AlbumsViewModel.Factory(activity.application)).get(AlbumsViewModel::class.java)
-        viewModel.Albumss.observe(viewLifecycleOwner, Observer<List<Albums>> {
+        activity.actionBar?.title = getString(R.string.title_Albums)
+        viewModel = ViewModelProvider(this, AlbumViewModel.Factory(activity.application)).get(AlbumViewModel::class.java)
+        viewModel.albums.observe(viewLifecycleOwner, Observer<List<Album>> {
             it.apply {
-                viewModelAdapter!!.Albumss = this
+                viewModelAdapter!!.albums = this
             }
         })
         viewModel.eventNetworkError.observe(viewLifecycleOwner, Observer<Boolean> { isNetworkError ->

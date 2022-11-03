@@ -14,7 +14,7 @@ import com.example.vinilos.ui.AlbumFragmentDirections
 
 class AlbumAdapter : RecyclerView.Adapter<AlbumAdapter.AlbumViewHolder>(){
 
-    var Albums :List<Album> = emptyList()
+    var albums :List<Album> = emptyList()
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -31,7 +31,7 @@ class AlbumAdapter : RecyclerView.Adapter<AlbumAdapter.AlbumViewHolder>(){
 
     override fun onBindViewHolder(holder: AlbumViewHolder, position: Int) {
         holder.viewDataBinding.also {
-            it.Album = Albums[position]
+            it.album = albums[position]
         }
         holder.viewDataBinding.root.setOnClickListener {
             val action = AlbumFragmentDirections.actionAlbumFragmentToDetailAlbumFragment()
@@ -41,7 +41,7 @@ class AlbumAdapter : RecyclerView.Adapter<AlbumAdapter.AlbumViewHolder>(){
     }
 
     override fun getItemCount(): Int {
-        return Albums.size
+        return albums.size
     }
 
 
