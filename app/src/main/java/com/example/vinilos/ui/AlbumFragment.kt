@@ -42,22 +42,6 @@ class AlbumFragment : Fragment() {
         recyclerView.adapter = viewModelAdapter
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        val activity = requireNotNull(this.activity) {
-            "You can only access the viewModel after onActivityCreated()"
-        }
-        activity.actionBar?.title = getString(R.string.title_Albums)
-        viewModel = ViewModelProvider(this, AlbumViewModel.Factory(activity.application)).get(AlbumViewModel::class.java)
-        viewModel.albums.observe(viewLifecycleOwner, Observer<List<Album>> {
-            it.apply {
-                viewModelAdapter!!.albums = this
-            }
-        })
-        viewModel.eventNetworkError.observe(viewLifecycleOwner, Observer<Boolean> { isNetworkError ->
-            if (isNetworkError) onNetworkError()
-        })
-    }
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

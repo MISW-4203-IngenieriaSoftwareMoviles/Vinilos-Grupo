@@ -23,17 +23,17 @@ class DetailAlbumViewModel(application: Application) : AndroidViewModel(applicat
         get() = _isNetworkErrorShown
 
     init {
-        refreshDataFromNetwork()
+        refreshDataFromNetwork(100)
     }
 
-    private fun refreshDataFromNetwork() {
+    private fun refreshDataFromNetwork(id: Int) {
         NetworkServiceAdapter.getInstance(getApplication()).getAlbum({
             _album.postValue(it)
             _eventNetworkError.value = false
             _isNetworkErrorShown.value = false
         }, {
             _eventNetworkError.value = true
-        }, 0)
+        }, id)
     }
 
     fun onNetworkErrorShown() {
