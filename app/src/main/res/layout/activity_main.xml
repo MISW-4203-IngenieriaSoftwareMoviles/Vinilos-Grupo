@@ -5,11 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    tools:context=".MainActivity">
+    tools:context=".ui.MainActivity">
 
-
-            <include layout="@layout/fragment_first_page" />
-
-
-
+    <include layout="@layout/fragment_first_page" />
 </androidx.constraintlayout.widget.ConstraintLayout>
