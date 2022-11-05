@@ -7,30 +7,46 @@
     android:layout_marginStart="16dp"
     android:layout_marginEnd="16dp">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/fragments_rv"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="260dp"
         android:layout_height="match_parent"
-        tools:listitem="@layout/album_fragment" />
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="119dp"
-        android:layout_height="120dp"
-        android:text="TextView" />
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="200dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="200dp"
+            android:src="@mipmap/logo_vinilos_foreground" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="30dp" />
 
-    <Button
-        android:id="@+id/btn_visitante"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="ENTRO ALBUMES"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        <TextView
+            android:id="@+id/titulo_albumes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Menú Álbumes"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="30dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/fragments_rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/album_item" />
+
+    </LinearLayout>
+
+
+
 </FrameLayout>
