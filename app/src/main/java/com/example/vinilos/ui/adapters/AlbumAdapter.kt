@@ -8,6 +8,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vinilos.R
 import com.example.vinilos.databinding.AlbumFragmentBinding
+import com.example.vinilos.databinding.AlbumItemBinding
 import com.example.vinilos.databinding.DetailAlbumFragmentBinding
 import com.example.vinilos.models.Album
 import com.example.vinilos.ui.AlbumFragmentDirections
@@ -21,7 +22,7 @@ class AlbumAdapter : RecyclerView.Adapter<AlbumAdapter.AlbumViewHolder>(){
         }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AlbumViewHolder {
-        val withDataBinding: DetailAlbumFragmentBinding = DataBindingUtil.inflate(
+        val withDataBinding: AlbumItemBinding = DataBindingUtil.inflate(
             LayoutInflater.from(parent.context),
             AlbumViewHolder.LAYOUT,
             parent,
@@ -45,11 +46,11 @@ class AlbumAdapter : RecyclerView.Adapter<AlbumAdapter.AlbumViewHolder>(){
     }
 
 
-    class AlbumViewHolder(val viewDataBinding: DetailAlbumFragmentBinding) :
+    class AlbumViewHolder(val viewDataBinding: AlbumItemBinding) :
         RecyclerView.ViewHolder(viewDataBinding.root) {
         companion object {
             @LayoutRes
-            val LAYOUT = R.layout.detail_album_fragment
+            val LAYOUT = R.layout.album_item
         }
     }
 
