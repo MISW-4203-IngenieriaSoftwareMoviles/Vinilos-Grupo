@@ -17,13 +17,13 @@
             android:layout_gravity="center_horizontal"
             android:orientation="vertical">
 
-            <ImageView
+            <!--<ImageView
                 android:id="@+id/imageAlbum"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_gravity="center_horizontal"
-                android:src="@mipmap/logo_vinilos_foreground"
-                android:layout_marginTop="40dp"/>
+
+                android:layout_marginTop="40dp"/>-->
 
             <TextView
                 android:id="@+id/name_album_det"
@@ -103,7 +103,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@{album.recordLabel}"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:layout_marginBottom="70dp"/>
 
         </LinearLayout>
 
