@@ -2,6 +2,7 @@ package com.example.vinilos.ui
 
 
 
+import android.widget.FrameLayout
 import androidx.fragment.app.testing.launchFragmentInContainer
 import androidx.lifecycle.Lifecycle
 import androidx.test.espresso.Espresso.onView
@@ -26,20 +27,21 @@ import org.hamcrest.Matchers.allOf
  */
 
 
-class H001_Test_Album_Principal {
+class H001TestAlbumPrincipal {
 
     @get:Rule
     var activityScenarioRule = activityScenarioRule<MainActivity>()
 
 
     @Test
-    fun testBotonVisitanteNombreAlbum(){
+    fun testBotonVisitanteTituloAlbum(){
 
         onView(withId(R.id.btn_visitante)).perform(click())
 
-        val nombreAlbum = "Buscando América"
+        val titulo = "Álbumes"
         // Validar el título
-        onView(withId(R.id.fragments_rv)).check(matches(withText(nombreAlbum)))
+        Thread.sleep(1_000)
+        onView(withId(R.id.titulo_albumes)).check(matches(withText(titulo)))
         Thread.sleep(2_000)
     }
 
@@ -69,7 +71,7 @@ class H001_Test_Album_Principal {
         val button = onView(
             allOf(
                 withId(R.id.btn_visitante), withText("SOY VISITANTE"),
-                withParent(withParent(IsInstanceOf.instanceOf(android.widget.FrameLayout::class.java))),
+                withParent(withParent(IsInstanceOf.instanceOf(FrameLayout::class.java))),
                 isDisplayed()
             )
         )
