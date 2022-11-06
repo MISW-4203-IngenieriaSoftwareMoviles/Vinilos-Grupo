@@ -11,63 +11,101 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <com.google.android.material.card.MaterialCardView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:strokeColor="@color/stroke_color"
-            app:strokeWidth="1dp">
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:orientation="vertical">
 
-            <LinearLayout
+            <ImageView
+                android:id="@+id/imageAlbum"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="100dp"
                 android:layout_gravity="center_horizontal"
-                android:orientation="vertical">
+                android:src="@mipmap/logo_vinilos_foreground"
+                android:layout_marginTop="40dp"/>
 
-                <TextView
-                    android:id="@+id/album_rel_date"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@{album.releaseDate}"
-                    android:textColor="@color/white"
-                    android:layout_marginBottom="20dp"
-                    android:layout_marginTop="20dp"/>
+            <TextView
+                android:id="@+id/name_album_det"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="@{album.name}"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp"/>
 
-                <TextView
-                    android:id="@+id/album_gen_det"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@{album.genre}"
-                    android:textColor="@color/white"
-                    android:layout_marginBottom="20dp"/>
+            <TextView
+                android:id="@+id/title_rel_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Fecha de lanzamiento:"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_marginBottom="5dp" />
 
-                <TextView
-                    android:id="@+id/name_album_det"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@{album.name}"
-                    android:textColor="@color/white"
-                    android:layout_marginBottom="20dp"/>
-                <TextView
-                    android:id="@+id/desc_album_det"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@{album.description}"
-                    android:textColor="@color/white"
-                    android:layout_marginBottom="20dp"/>
+            <TextView
+                android:id="@+id/album_rel_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{album.releaseDate}"
+                android:textColor="@color/white"
+                android:layout_marginBottom="20dp" />
 
-                <TextView
-                    android:id="@+id/label_album_det"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@{album.recordLabel}"
-                    android:textColor="@color/white"
-                    android:layout_marginTop="10dp"/>
+            <TextView
+                android:id="@+id/title_genre_album"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Género:"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_marginBottom="5dp" />
 
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
+            <TextView
+                android:id="@+id/album_gen_det"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{album.genre}"
+                android:textColor="@color/white"
+                android:layout_marginBottom="20dp"/>
+
+            <TextView
+                android:id="@+id/title_desc_album"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Descripción:"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_marginBottom="5dp" />
+
+            <TextView
+                android:id="@+id/desc_album_det"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{album.description}"
+                android:textColor="@color/white"
+                android:layout_marginBottom="20dp"/>
+
+            <TextView
+                android:id="@+id/title_label_album"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sello discográfico:"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_marginBottom="5dp" />
+
+            <TextView
+                android:id="@+id/label_album_det"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{album.recordLabel}"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
