@@ -4,12 +4,15 @@ import android.app.Application
 import androidx.lifecycle.*
 import com.example.vinilos.models.Album
 import com.example.vinilos.network.NetworkServiceAdapter
+import com.example.vinilos.repositories.AlbumRepository
 
-class DetailAlbumViewModel(application: Application) : AndroidViewModel(application) {
+class DetailAlbumViewModel(application: Application, id: Int) : AndroidViewModel(application) {
+
+    private val albumsRepository = AlbumRepository(application)
 
     private val _album = MutableLiveData<Album>()
 
-    val albums: LiveData<Album>
+    val album: LiveData<Album>
         get() = _album
 
     private var _eventNetworkError = MutableLiveData<Boolean>(false)
@@ -22,29 +25,31 @@ class DetailAlbumViewModel(application: Application) : AndroidViewModel(applicat
     val isNetworkErrorShown: LiveData<Boolean>
         get() = _isNetworkErrorShown
 
+    val id: Int = id
+
     init {
-        refreshDataFromNetwork(100)
+        refreshDataFromNetwork()
     }
 
-    private fun refreshDataFromNetwork(id: Int) {
-        NetworkServiceAdapter.getInstance(getApplication()).getAlbum({
+    private fun refreshDataFromNetwork() {
+        albumsRepository.refreshDataDetailAlbum(id, {
             _album.postValue(it)
             _eventNetworkError.value = false
             _isNetworkErrorShown.value = false
         }, {
             _eventNetworkError.value = true
-        }, id)
+        })
     }
 
     fun onNetworkErrorShown() {
         _isNetworkErrorShown.value = true
     }
 
-    class Factory(val app: Application) : ViewModelProvider.Factory {
+    class Factory(val app: Application, val id: Int) : ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
             if (modelClass.isAssignableFrom(DetailAlbumViewModel::class.java)) {
                 @Suppress("UNCHECKED_CAST")
-                return DetailAlbumViewModel(app) as T
+                return DetailAlbumViewModel(app, id) as T
             }
             throw IllegalArgumentException("Unable to construct viewmodel")
         }

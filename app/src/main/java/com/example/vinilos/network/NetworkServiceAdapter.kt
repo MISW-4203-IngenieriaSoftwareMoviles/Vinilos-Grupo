@@ -63,12 +63,12 @@ class NetworkServiceAdapter constructor(context: Context) {
     }
 
     fun getAlbum(
+        id: Int,
         onComplete: (resp: Album) -> Unit,
-        onError: (error: VolleyError) -> Unit,
-        id: Int
+        onError: (error: VolleyError) -> Unit
     ) {
         requestQueue.add(
-            getRequestAlbum("albums/", id,
+            getRequestAlbum("albums/$id",
                 Response.Listener<String> { response ->
                     val item = JSONObject(response)
                     onComplete(
@@ -99,11 +99,10 @@ class NetworkServiceAdapter constructor(context: Context) {
 
     private fun getRequestAlbum(
         path: String,
-        id: Int,
         responseListener: Response.Listener<String>,
         errorListener: Response.ErrorListener
     ): StringRequest {
-        return StringRequest(Request.Method.GET, BASE_URL + path + id, responseListener, errorListener)
+        return StringRequest(Request.Method.GET, BASE_URL + path, responseListener, errorListener)
     }
 
 }

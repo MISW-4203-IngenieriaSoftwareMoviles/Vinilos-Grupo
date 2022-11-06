@@ -27,5 +27,8 @@
         android:name="com.example.vinilos.ui.DetailAlbumFragment"
         android:label="detail_album_fragment"
         tools:layout="@layout/detail_album_fragment" >
+        <argument
+            android:name="id"
+            app:argType="integer" />
     </fragment>
 </navigation>
