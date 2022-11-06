@@ -28,6 +28,8 @@ class DetailAlbumFragment : Fragment() {
     private lateinit var viewModel: DetailAlbumViewModel
     private var viewModelAdapter: DetailAlbumAdapter? = null
 
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -35,6 +37,7 @@ class DetailAlbumFragment : Fragment() {
         _binding = AlbumFragmentBinding.inflate(inflater, container, false)
         val view = binding.root
         viewModelAdapter = DetailAlbumAdapter()
+
         return view
     }
 
