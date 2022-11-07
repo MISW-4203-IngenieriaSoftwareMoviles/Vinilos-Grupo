@@ -1,7 +1,7 @@
 # Vinilos-Grupo12
 
 
-Requerimientos de Software:
+## Requerimientos de Software:
 
 Android Studio Dolphin | 2021.3.1 Patch 1
 Build #AI-213.7172.25.2113.9123335, built on September 29, 2022
@@ -22,7 +22,7 @@ Java Jdk 11 o superior.
 
 
 
-Pasos para ejecutar el proyecto:
+## Pasos para ejecutar el proyecto:
 
 
 1. Descarcar el repositorio con el siguiente comando:
