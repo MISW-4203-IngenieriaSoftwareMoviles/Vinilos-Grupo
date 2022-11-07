@@ -20,7 +20,7 @@ Non-Bundled Plugins:
 
 - Java Jdk 11 o superior.
 
-Repositorio del Back:
+**Repositorio del Back:** 
 https://misw-4203-vinilos-grupo12.herokuapp.com/
 
 ## Pasos para ejecutar el proyecto:
