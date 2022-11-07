@@ -26,7 +26,7 @@ https://misw-4203-vinilos-grupo12.herokuapp.com/
 ## Pasos para ejecutar el proyecto:
 
 
-**1.** Descarcar el repositorio con el siguiente comando:
+**1.** Descargar el repositorio con el siguiente comando:
 
 
 git clone https://github.com/MISW-4203-IngenieriaSoftwareMoviles/Vinilos-Grupo12.git
