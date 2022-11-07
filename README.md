@@ -20,7 +20,8 @@ Non-Bundled Plugins:
 
 - Java Jdk 11 o superior.
 
-
+Repositorio del Back:
+https://misw-4203-vinilos-grupo12.herokuapp.com/
 
 ## Pasos para ejecutar el proyecto:
 
@@ -46,3 +47,12 @@ cd Vinilos-Grupo12
 **NOTA:*
 - En caso de con compilar y ejecutar el proyecto, se debe sincronizar Gradle en el Menú: File -> Sync Project With Gradle Files
 
+## Pasos para ejecutar las pruebas E2E del proyecto:
+
+**1.** Para ejecutar las pruebas E2E de forma individual, se debe ingresar en el paquete java -> com.example.vinilos (androidTest) -> ui: 
+
+**2.** Ejecutar cada una de las siguientes seleccionando cada prueba con click derecho:
+
+    Run 'H001_Test_Album_Principal'
+    Run 'HU01_Test_ListadoAlbumes'
+    Run 'HU02_Test_DetalleAlbum'
