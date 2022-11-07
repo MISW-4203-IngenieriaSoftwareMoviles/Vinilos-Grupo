@@ -43,5 +43,4 @@ cd Vinilos-Grupo12
 
 7. En caso de no ejecutar, debe de "Recompilar el proyecto": Build -> Rebuild Project
 
- - 
 
