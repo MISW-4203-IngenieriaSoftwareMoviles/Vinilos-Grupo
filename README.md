@@ -37,7 +37,11 @@ cd Vinilos-Grupo12
 
 4. Abrir Android Studio.
 
-5. Dentro de Android Studio  navegar en : File -> Open : Se debe seleccionar el directorio donde descargo el repositorio.
+5. Dentro de Android Studio  navegar, en el menu principal: File -> Open : Se debe seleccionar el directorio donde descargo el repositorio.
 
-6. Pasos para compilar el 
+6. Pasos para ejecutar el proyecto, en el menu principal: Run ->  Run App
+
+7. En caso de no ejecutar, debe de "Recompilar el proyecto": Build -> Rebuild Project
+
+ - 
 
