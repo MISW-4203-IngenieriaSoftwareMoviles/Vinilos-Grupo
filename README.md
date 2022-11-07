@@ -25,22 +25,24 @@ Non-Bundled Plugins:
 ## Pasos para ejecutar el proyecto:
 
 
-1. Descarcar el repositorio con el siguiente comando:
+**1.** Descarcar el repositorio con el siguiente comando:
 
 
 git clone https://github.com/MISW-4203-IngenieriaSoftwareMoviles/Vinilos-Grupo12.git
 
-2. Ingresar al directorio del proyecto:
+**2.** Ingresar al directorio del proyecto:
 cd Vinilos-Grupo12
 
-3. Cambiar en Git a la Rama Main o Release (Ambas se encuentran actualizadas)
+**3.** Cambiar en Git a la Rama Main o Release (Ambas se encuentran actualizadas)
 
-4. Abrir Android Studio.
+**4.** Abrir Android Studio.
 
-5. Dentro de Android Studio  navegar, en el menu principal: File -> Open : Se debe seleccionar el directorio donde descargo el repositorio.
+**5.** Dentro de Android Studio  navegar, en el menu principal: File -> Open : Se debe seleccionar el directorio donde descargo el repositorio.
 
-6. Pasos para ejecutar el proyecto, en el menu principal: Run ->  Run App
+**6.** Pasos para ejecutar el proyecto, en el menu principal: Run ->  Run App
 
-7. En caso de no ejecutar, debe de "Recompilar el proyecto": Build -> Rebuild Project
+**7.** En caso de no ejecutar, debe de "Recompilar el proyecto": Build -> Rebuild Project
 
+**NOTA:*
+- En caso de con compilar y ejecutar el proyecto, se debe sincronizar Gradle en el Menú: File -> Sync Project With Gradle Files
 
