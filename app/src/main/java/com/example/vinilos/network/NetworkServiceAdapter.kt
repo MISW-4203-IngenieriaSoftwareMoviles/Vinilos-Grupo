@@ -9,7 +9,7 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.vinilos.models.Album
 import com.example.vinilos.models.Collector
-import com.example.vinilos.models.FavoritePerformer
+import com.example.vinilos.models.Performer
 import org.json.JSONArray
 import org.json.JSONObject
 
@@ -102,12 +102,12 @@ class NetworkServiceAdapter constructor(context: Context) {
                         val item = resp.getJSONObject(i)
 //                        val performer = item.getJSONObject("favoritePerformers")
                         val performers = item.getJSONArray("favoritePerformers")
-                        val listFavoritePerformer = mutableListOf<FavoritePerformer>()
+                        val listFavoritePerformer = mutableListOf<Performer>()
                         for (i in 0 until performers.length()) {
                             val performer = performers.getJSONObject(i)
                             listFavoritePerformer.add(
                                 i,
-                                FavoritePerformer(
+                                Performer(
                                     id = performer.getInt("id"),
                                     name = performer.getString("name"),
                                     image = performer.getString("image"),
