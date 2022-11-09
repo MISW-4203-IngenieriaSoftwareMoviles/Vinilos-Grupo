@@ -1,15 +1,15 @@
 package com.example.vinilos.network
 
 import android.content.Context
-import android.util.Log
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.Response
 import com.android.volley.VolleyError
-import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.vinilos.models.Album
+import com.example.vinilos.models.Collector
+import com.example.vinilos.models.FavoritePerformer
 import org.json.JSONArray
 import org.json.JSONObject
 
@@ -89,6 +89,52 @@ class NetworkServiceAdapter constructor(context: Context) {
         )
     }
 
+    fun getCollectors(
+        onComplete: (resp: List<Collector>) -> Unit,
+        onError: (error: VolleyError) -> Unit
+    ) {
+        requestQueue.add(
+            getRequestCollectors("collectors",
+                Response.Listener<String> { response ->
+                    val resp = JSONArray(response)
+                    val list = mutableListOf<Collector>()
+                    for (i in 0 until resp.length()) {
+                        val item = resp.getJSONObject(i)
+//                        val performer = item.getJSONObject("favoritePerformers")
+                        val performers = item.getJSONArray("favoritePerformers")
+                        val listFavoritePerformer = mutableListOf<FavoritePerformer>()
+                        for (i in 0 until performers.length()) {
+                            val performer = performers.getJSONObject(i)
+                            listFavoritePerformer.add(
+                                i,
+                                FavoritePerformer(
+                                    id = performer.getInt("id"),
+                                    name = performer.getString("name"),
+                                    image = performer.getString("image"),
+                                    description = performer.getString("description")
+//                                    birthDate = performer.getString("birthDate")
+                                )
+                            )
+                        }
+                        list.add(
+                            i,
+                            Collector(
+                                id = item.getInt("id"),
+                                name = item.getString("name"),
+                                telephone = item.getString("telephone"),
+                                email = item.getString("email"),
+                                favoritePerformers = listFavoritePerformer
+                            )
+                        )
+                    }
+                    onComplete(list)
+                },
+                Response.ErrorListener {
+                    onError(it)
+                })
+        )
+    }
+
     private fun getRequestAlbums(
         path: String,
         responseListener: Response.Listener<String>,
@@ -98,6 +144,14 @@ class NetworkServiceAdapter constructor(context: Context) {
     }
 
     private fun getRequestAlbum(
+        path: String,
+        responseListener: Response.Listener<String>,
+        errorListener: Response.ErrorListener
+    ): StringRequest {
+        return StringRequest(Request.Method.GET, BASE_URL + path, responseListener, errorListener)
+    }
+
+    private fun getRequestCollectors(
         path: String,
         responseListener: Response.Listener<String>,
         errorListener: Response.ErrorListener
