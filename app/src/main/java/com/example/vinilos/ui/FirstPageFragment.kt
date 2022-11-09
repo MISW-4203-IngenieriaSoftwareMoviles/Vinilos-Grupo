@@ -35,6 +35,11 @@ class FirstPageFragment : Fragment() {
         binding.btnVisitante.setOnClickListener {
             findNavController().navigate(R.id.action_firstPageFragment_to_albumFragment)
         }
+
+        binding.btnColeccionista.setOnClickListener {
+            findNavController().navigate(R.id.action_firstPageFragment_to_collectorFragment)
+        }
+
     }
 
     override fun onDestroyView() {
