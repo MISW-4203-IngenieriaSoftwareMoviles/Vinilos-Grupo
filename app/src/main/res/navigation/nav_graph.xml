@@ -8,17 +8,35 @@
         android:id="@+id/firstPageFragment"
         android:name="com.example.vinilos.ui.FirstPageFragment"
         android:label="first_page_fragment"
-        tools:layout="@layout/fragment_first_page" >
-<!--        <action-->
-<!--            android:id="@+id/action_firstPageFragment_to_albumFragment"-->
-<!--            app:destination="@id/albumFragment" />-->
+        tools:layout="@layout/fragment_main_menu">
         <action
-            android:id="@+id/action_firstPageFragment_to_albumFragment"
+            android:id="@+id/action_firstPageFragment_to_mainMenuFragment"
+            app:destination="@id/mainMenuFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/mainMenuFragment"
+        android:name="com.example.vinilos.ui.MainMenuFragment"
+        android:label="main_menu_page_fragment"
+        tools:layout="@layout/fragment_main_menu" >
+        <!--        <action-->
+        <!--            android:id="@+id/action_firstPageFragment_to_albumFragment"-->
+        <!--            app:destination="@id/albumFragment" />-->
+
+        <action
+            android:id="@+id/main_menu_to_album_fragment"
             app:destination="@id/albumFragment" />
         <action
-            android:id="@+id/action_firstPageFragment_to_collectorFragment"
+
+            android:id="@+id/main_menu_to_collector_fragment"
+
             app:destination="@id/collectorFragment" />
     </fragment>
+
+
+
+
+
     <fragment
         android:id="@+id/albumFragment"
         android:name="com.example.vinilos.ui.AlbumFragment"
