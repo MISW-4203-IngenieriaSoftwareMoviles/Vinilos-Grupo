@@ -27,7 +27,9 @@
             android:id="@+id/main_menu_to_album_fragment"
             app:destination="@id/albumFragment" />
         <action
+
             android:id="@+id/main_menu_to_collector_fragment"
+
             app:destination="@id/collectorFragment" />
     </fragment>
 
