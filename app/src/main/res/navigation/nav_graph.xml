@@ -64,4 +64,10 @@
 <!--            android:id="@+id/action_collectorFragment_to_detailCollectorFragment"-->
 <!--            app:destination="@id/detailCollectorFragment" />-->
     </fragment>
+    <fragment
+        android:id="@+id/performerFragment"
+        android:name="com.example.vinilos.ui.PerformerFragment"
+        android:label="performer_fragment"
+        tools:layout="@layout/performer_fragment">
+    </fragment>
 </navigation>
