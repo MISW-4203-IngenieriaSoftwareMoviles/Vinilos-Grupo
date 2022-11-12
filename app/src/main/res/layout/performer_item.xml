@@ -30,18 +30,17 @@
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="60dp"
-                android:layout_height="match_parent"
-                android:src="@mipmap/logo_vinilos_foreground"
-                android:textAlignment="viewStart" />
+                android:layout_height="match_parent"/>
 
             <TextView
                 android:id="@+id/album_name"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
                 android:text="@{performer.name}"
                 android:textAlignment="viewStart"
-                android:textColor="@color/white"
-                android:layout_marginTop="10dp"/>
+                android:textColor="@color/white" />
 
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>

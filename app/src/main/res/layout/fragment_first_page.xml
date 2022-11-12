@@ -13,10 +13,14 @@
         android:layout_gravity="center_horizontal"
         android:orientation="vertical">
 
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="30dp" />
+
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="match_parent"
-            android:layout_height="419dp"
+            android:layout_height="300dp"
             android:src="@mipmap/logo_vinilos_foreground" />
 
         <Space
