@@ -178,6 +178,53 @@ class NetworkServiceAdapter constructor(context: Context) {
             }))
     }
 
+    fun getPerformer(
+        id: Int,
+        onComplete: (resp: Performer) -> Unit,
+        onError: (error: VolleyError) -> Unit
+    ) {
+        requestQueue.add(
+            getRequestBand("bands/$id",
+                Response.Listener<String> { response ->
+                    val item = JSONObject(response)
+                    onComplete(
+                        Performer(
+                            id = item.getInt("id"),
+                            name = item.getString("name"),
+                            image = item.getString("image"),
+                            description = item.getString("description"),
+                            creationDate = item.getString("creationDate"),
+                            birthDate = "",
+                            type = "Band"
+                        )
+                    )
+                },
+                Response.ErrorListener {
+                    onError(it)
+                })
+        )
+        requestQueue.add(
+            getRequestMusician("musicians/$id",
+                Response.Listener<String> { response ->
+                    val item = JSONObject(response)
+                    onComplete(
+                        Performer(
+                            id = item.getInt("id"),
+                            name = item.getString("name"),
+                            image = item.getString("image"),
+                            description = item.getString("description"),
+                            creationDate = "",
+                            birthDate = item.getString("birthDate"),
+                            type = "Musician"
+                        )
+                    )
+                },
+                Response.ErrorListener {
+                    onError(it)
+                })
+        )
+    }
+
     private fun getRequestAlbums(
         path: String,
         responseListener: Response.Listener<String>,
@@ -210,6 +257,20 @@ class NetworkServiceAdapter constructor(context: Context) {
     }
 
     private fun getRequestMusicians(
+        path:String,
+        responseListener: Response.Listener<String>,
+        errorListener: Response.ErrorListener): StringRequest {
+        return StringRequest(Request.Method.GET, BASE_URL+path, responseListener,errorListener)
+    }
+
+    private fun getRequestBand(
+        path:String,
+        responseListener: Response.Listener<String>,
+        errorListener: Response.ErrorListener): StringRequest {
+        return StringRequest(Request.Method.GET, BASE_URL+path, responseListener,errorListener)
+    }
+
+    private fun getRequestMusician(
         path:String,
         responseListener: Response.Listener<String>,
         errorListener: Response.ErrorListener): StringRequest {
