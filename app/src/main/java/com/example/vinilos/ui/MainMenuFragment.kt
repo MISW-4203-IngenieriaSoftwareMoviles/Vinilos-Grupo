@@ -56,6 +56,9 @@ class MainMenuFragment : Fragment() {
             findNavController().navigate(R.id.main_menu_to_collector_fragment)
         }
 
+        binding.btnArtistas.setOnClickListener {
+            findNavController().navigate(R.id.main_menu_to_performer_fragment)
+        }
     }
 
     override fun onDestroyView() {

@@ -15,12 +15,5 @@ class PerformerRepository (val application: Application) {
             },
             onError
         )
-        NetworkServiceAdapter.getInstance(application).getMusicians(
-            {
-                //Guardar las bandas de la variable it en un almacén de datos local para uso futuro
-                callback(it)
-            },
-            onError
-        )
     }
 }
