@@ -70,5 +70,15 @@
         android:name="com.example.vinilos.ui.PerformerFragment"
         android:label="performer_fragment"
         tools:layout="@layout/performer_fragment">
+        <action
+            android:id="@+id/action_performerFragment_to_detailPerformerFragment"
+            app:destination="@id/detailPerformerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailPerformerFragment"
+        android:name="com.example.vinilos.ui.DetailPerformerFragment"
+        android:label="album_fragment"
+        tools:layout="@layout/detail_performer_fragment" >
+
     </fragment>
 </navigation>
