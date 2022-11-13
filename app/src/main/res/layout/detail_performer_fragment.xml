@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable name="performer" type="com.example.vinilos.models.Performer"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageDetailPerformer"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_gravity="center_horizontal"
+
+                android:layout_marginTop="40dp"/>
+
+            <TextView
+                android:id="@+id/name_perf_det"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="@{performer.name}"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp"/>
+
+            <TextView
+                android:id="@+id/title_creation_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Fecha de creación:"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_marginBottom="5dp" />
+
+            <TextView
+                android:id="@+id/perf_creation_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{performer.creationDate}"
+                android:textColor="@color/white"
+                android:layout_marginBottom="20dp" />
+
+            <TextView
+                android:id="@+id/title_birth_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Fecha de nacimiento:"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_marginBottom="5dp" />
+
+            <TextView
+                android:id="@+id/perf_birth_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{performer.birthDate}"
+                android:textColor="@color/white"
+                android:layout_marginBottom="20dp"/>
+
+            <TextView
+                android:id="@+id/title_desc_perf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Descripción:"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_marginBottom="5dp" />
+
+            <TextView
+                android:id="@+id/desc_perf_det"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{performer.description}"
+                android:textColor="@color/white"
+                android:layout_marginBottom="70dp"/>
+
+
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
