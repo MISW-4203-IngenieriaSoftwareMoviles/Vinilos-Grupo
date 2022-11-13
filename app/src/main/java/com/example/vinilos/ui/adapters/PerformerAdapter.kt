@@ -12,9 +12,8 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.example.vinilos.R
 import com.example.vinilos.databinding.PerformerItemBinding
-import com.example.vinilos.models.Collector
 import com.example.vinilos.models.Performer
-//import com.example.vinilos.ui.PerformerFragmentDirections
+import com.example.vinilos.ui.PerformerFragmentDirections
 
 class PerformerAdapter : RecyclerView.Adapter<PerformerAdapter.PerformerViewHolder>(){
 
@@ -38,7 +37,7 @@ class PerformerAdapter : RecyclerView.Adapter<PerformerAdapter.PerformerViewHold
             it.performer = performers[position]
         }
         holder.bind(performers[position])
-       /* holder.viewDataBinding.root.setOnClickListener {
+        /*holder.viewDataBinding.root.setOnClickListener {
             val action = PerformerFragmentDirections.actionPerformerFragmentToDetailPerformerFragment(performers[position].id)
             // Navigate using that action
             holder.viewDataBinding.root.findNavController().navigate(action)

@@ -182,6 +182,7 @@ class NetworkServiceAdapter constructor(context: Context) {
         onComplete: (resp: Performer) -> Unit,
         onError: (error: VolleyError) -> Unit
     ) {
+        try{
         requestQueue.add(
             getRequestBand("bands/$id",
                 Response.Listener<String> { response ->
@@ -201,7 +202,8 @@ class NetworkServiceAdapter constructor(context: Context) {
                 Response.ErrorListener {
                     onError(it)
                 })
-        )
+        )}catch (e:Exception){}
+        try{
         requestQueue.add(
             getRequestMusician("musicians/$id",
                 Response.Listener<String> { response ->
@@ -221,7 +223,8 @@ class NetworkServiceAdapter constructor(context: Context) {
                 Response.ErrorListener {
                     onError(it)
                 })
-        )
+        )}
+        catch (e:Exception){}
     }
 
     private fun getRequestAlbums(
