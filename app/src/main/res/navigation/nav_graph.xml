@@ -79,6 +79,8 @@
         android:name="com.example.vinilos.ui.DetailPerformerFragment"
         android:label="album_fragment"
         tools:layout="@layout/detail_performer_fragment" >
-
+        <argument
+            android:name="id"
+            app:argType="integer" />
     </fragment>
 </navigation>
