@@ -35,7 +35,8 @@ class CollectorAdapter : RecyclerView.Adapter<CollectorAdapter.CollectorViewHold
         collectorViewHolder.viewDataBinding.also {
             it.collector = collectors[position]
         }
-        collectorViewHolder.bind(collectors[position])
+        //collectorViewHolder.bind(collectors[position])
+
 //        holder.viewDataBinding.root.setOnClickListener {
 //            val action = CollectorFragmentDirections.actionCollectorFragmentToDetailCollectorFragment(collectors[position].collectorId)
 //            // Navigate using that action
@@ -55,7 +56,7 @@ class CollectorAdapter : RecyclerView.Adapter<CollectorAdapter.CollectorViewHold
             val LAYOUT = R.layout.collector_item
         }
 
-        fun bind(collector: Collector) {
+        /*fun bind(collector: Collector) {
             Glide.with(itemView)
                 .load(collector.favoritePerformers[0].image.toUri().buildUpon().scheme("https").build())
                 .apply(
@@ -65,6 +66,6 @@ class CollectorAdapter : RecyclerView.Adapter<CollectorAdapter.CollectorViewHold
 //                        .placeholder(R.drawable.loading_animation)
 //                        .error(R.drawable.ic_broken_image))
                 .into(viewDataBinding.imageView)
-        }
+        }*/
     }
 }
