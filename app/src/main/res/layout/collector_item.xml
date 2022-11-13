@@ -27,12 +27,12 @@
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
-            <ImageView
+            <!--<ImageView
                 android:id="@+id/imageView"
                 android:layout_width="60dp"
                 android:layout_height="match_parent"/>
-<!--                android:src="@mipmap/logo_vinilos_foreground"-->
-<!--                android:textAlignment="viewStart" -->
+                android:src="@mipmap/logo_vinilos_foreground"
+                android:textAlignment="viewStart" -->
 
 
             <TextView
