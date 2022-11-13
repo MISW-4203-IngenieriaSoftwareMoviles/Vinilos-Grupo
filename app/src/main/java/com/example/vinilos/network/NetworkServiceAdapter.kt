@@ -98,10 +98,9 @@ class NetworkServiceAdapter constructor(context: Context) {
                     val list = mutableListOf<Collector>()
                     for (i in 0 until resp.length()) {
                         val item = resp.getJSONObject(i)
-//                        val performer = item.getJSONObject("favoritePerformers")
                         val performers = item.getJSONArray("favoritePerformers")
-                        val listFavoritePerformer = mutableListOf<Performer>()
-                        for (i in 0 until performers.length()) {
+                        //val listFavoritePerformer = mutableListOf<Performer>()
+                        /*for (i in 0 until performers.length()) {
                             val performer = performers.getJSONObject(i)
                             listFavoritePerformer.add(
                                 i,
@@ -115,15 +114,15 @@ class NetworkServiceAdapter constructor(context: Context) {
                                     type = ""
                                 )
                             )
-                        }
+                        }*/
                         list.add(
                             i,
                             Collector(
                                 id = item.getInt("id"),
                                 name = item.getString("name"),
                                 telephone = item.getString("telephone"),
-                                email = item.getString("email"),
-                                favoritePerformers = listFavoritePerformer
+                                email = item.getString("email")
+                                //favoritePerformers = listFavoritePerformer
                             )
                         )
                     }
