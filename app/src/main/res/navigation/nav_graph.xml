@@ -34,10 +34,6 @@
             app:destination="@id/performerFragment" />
     </fragment>
 
-
-
-
-
     <fragment
         android:id="@+id/albumFragment"
         android:name="com.example.vinilos.ui.AlbumFragment"
@@ -83,4 +79,5 @@
             android:name="id"
             app:argType="integer" />
     </fragment>
+
 </navigation>

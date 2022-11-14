@@ -42,6 +42,7 @@ class FirstPageFragment : Fragment() {
 
         }
 
+
     }
 
     override fun onDestroyView() {

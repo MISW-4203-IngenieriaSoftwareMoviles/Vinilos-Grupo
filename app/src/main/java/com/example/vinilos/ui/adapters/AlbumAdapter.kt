@@ -16,6 +16,7 @@ import com.example.vinilos.databinding.AlbumItemBinding
 import com.example.vinilos.databinding.DetailAlbumFragmentBinding
 import com.example.vinilos.models.Album
 import com.example.vinilos.models.Collector
+
 import com.example.vinilos.ui.AlbumFragmentDirections
 
 class AlbumAdapter : RecyclerView.Adapter<AlbumAdapter.AlbumViewHolder>(){
@@ -70,6 +71,7 @@ class AlbumAdapter : RecyclerView.Adapter<AlbumAdapter.AlbumViewHolder>(){
 //                        .error(R.drawable.ic_broken_image))
                 .into(viewDataBinding.imageViewAlbum)
         }
+
     }
 
 }
