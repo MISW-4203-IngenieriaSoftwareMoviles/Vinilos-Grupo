@@ -13,12 +13,29 @@
         android:layout_gravity="center_horizontal"
         android:orientation="vertical">
 
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="30dp" />
+
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="match_parent"
-            android:layout_height="419dp"
+            android:layout_height="300dp"
             android:src="@mipmap/logo_vinilos_foreground" />
 
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="30dp" />
+
+        <Button
+            android:id="@+id/btn_coleccionista"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SOY COLECCIONISTA"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:cornerRadius="20dp" />
         <Space
             android:layout_width="match_parent"
             android:layout_height="30dp" />
@@ -32,6 +49,7 @@
             android:textSize="20sp"
             android:textStyle="bold"
             app:cornerRadius="20dp" />
+
     </LinearLayout>
 
 
