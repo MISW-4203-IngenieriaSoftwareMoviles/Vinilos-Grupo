@@ -33,8 +33,16 @@ class FirstPageFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnVisitante.setOnClickListener {
-            findNavController().navigate(R.id.action_firstPageFragment_to_albumFragment)
+            findNavController().navigate(R.id.mainMenuFragment)
         }
+
+        binding.btnColeccionista.setOnClickListener {
+
+            findNavController().navigate(R.id.mainMenuFragment)
+
+        }
+
+
     }
 
     override fun onDestroyView() {

@@ -6,10 +6,9 @@ import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.Response
 import com.android.volley.VolleyError
-import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
-import com.example.vinilos.models.Album
+import com.example.vinilos.models.*
 import org.json.JSONArray
 import org.json.JSONObject
 
@@ -89,6 +88,146 @@ class NetworkServiceAdapter constructor(context: Context) {
         )
     }
 
+    fun getCollectors(
+        onComplete: (resp: List<Collector>) -> Unit,
+        onError: (error: VolleyError) -> Unit
+    ) {
+        requestQueue.add(
+            getRequestCollectors("collectors",
+                Response.Listener<String> { response ->
+                    val resp = JSONArray(response)
+                    val list = mutableListOf<Collector>()
+                    for (i in 0 until resp.length()) {
+                        val item = resp.getJSONObject(i)
+                        val performers = item.getJSONArray("favoritePerformers")
+                        //val listFavoritePerformer = mutableListOf<Performer>()
+                        /*for (i in 0 until performers.length()) {
+                            val performer = performers.getJSONObject(i)
+                            listFavoritePerformer.add(
+                                i,
+                                Performer(
+                                    id = performer.getInt("id"),
+                                    name = performer.getString("name"),
+                                    image = performer.getString("image"),
+                                    description = performer.getString("description"),
+                                    birthDate = "",
+                                    creationDate = "",
+                                    type = ""
+                                )
+                            )
+                        }*/
+                        list.add(
+                            i,
+                            Collector(
+                                id = item.getInt("id"),
+                                name = item.getString("name"),
+                                telephone = item.getString("telephone"),
+                                email = item.getString("email")
+                                //favoritePerformers = listFavoritePerformer
+                            )
+                        )
+                    }
+                    onComplete(list)
+                },
+                Response.ErrorListener {
+                    onError(it)
+                })
+        )
+    }
+
+    fun getBands(onComplete:(resp:List<Performer>)->Unit, onError: (error:VolleyError)->Unit){
+        val list = mutableListOf<Performer>()
+        requestQueue.add(getRequestBands("bands",
+            Response.Listener<String> { response ->
+                val resp = JSONArray(response)
+                for (i in 0 until resp.length()) {
+                    val item = resp.getJSONObject(i)
+                    list.add(i, Performer(
+                        id = item.getInt("id"),
+                        name = item.getString("name"),
+                        image = item.getString("image"),
+                        description = item.getString("description"),
+                        creationDate = item.getString("creationDate"),
+                        birthDate = "",
+                        type = "Band"
+                    ))
+                }
+            },
+            Response.ErrorListener {
+                onError(it)
+            }))
+        requestQueue.add(getRequestMusicians("musicians",
+            Response.Listener<String> { response ->
+                val resp = JSONArray(response)
+                for (i in 0 until resp.length()) {
+                    val item = resp.getJSONObject(i)
+                    list.add(i, Performer(
+                        id = item.getInt("id"),
+                        name = item.getString("name"),
+                        image = item.getString("image"),
+                        description = item.getString("description"),
+                        creationDate = "",
+                        birthDate = item.getString("birthDate"),
+                        type = "Musician")
+                    )
+                }
+                onComplete(list)
+            },
+            Response.ErrorListener {
+                onError(it)
+            }))
+    }
+
+    fun getPerformer(
+        id: Int,
+        onComplete: (resp: Performer) -> Unit,
+        onError: (error: VolleyError) -> Unit
+    ) {
+        try{
+        requestQueue.add(
+            getRequestBand("bands/$id",
+                Response.Listener<String> { response ->
+                    val item = JSONObject(response)
+                    onComplete(
+                        Performer(
+                            id = item.getInt("id"),
+                            name = item.getString("name"),
+                            image = item.getString("image"),
+                            description = item.getString("description"),
+                            creationDate = item.getString("creationDate"),
+                            birthDate = "",
+                            type = "Band"
+                        )
+                    )
+                },
+                Response.ErrorListener {
+                    onError(it)
+                })
+        )}catch (e:Exception){}
+        try{
+        requestQueue.add(
+            getRequestMusician("musicians/$id",
+                Response.Listener<String> { response ->
+                    val item = JSONObject(response)
+                    onComplete(
+                        Performer(
+                            id = item.getInt("id"),
+                            name = item.getString("name"),
+                            image = item.getString("image"),
+                            description = item.getString("description"),
+                            creationDate = "",
+                            birthDate = item.getString("birthDate"),
+                            type = "Musician"
+                        )
+                    )
+                },
+                Response.ErrorListener {
+                    onError(it)
+                })
+        )}
+        catch (e:Exception){}
+    }
+
     private fun getRequestAlbums(
         path: String,
         responseListener: Response.Listener<String>,
@@ -103,6 +242,42 @@ class NetworkServiceAdapter constructor(context: Context) {
         errorListener: Response.ErrorListener
     ): StringRequest {
         return StringRequest(Request.Method.GET, BASE_URL + path, responseListener, errorListener)
+    }
+
+    private fun getRequestCollectors(
+        path: String,
+        responseListener: Response.Listener<String>,
+        errorListener: Response.ErrorListener
+    ): StringRequest {
+        return StringRequest(Request.Method.GET, BASE_URL + path, responseListener, errorListener)
+    }
+
+    private fun getRequestBands(
+        path:String,
+        responseListener: Response.Listener<String>,
+        errorListener: Response.ErrorListener): StringRequest {
+        return StringRequest(Request.Method.GET, BASE_URL+path, responseListener,errorListener)
+    }
+
+    private fun getRequestMusicians(
+        path:String,
+        responseListener: Response.Listener<String>,
+        errorListener: Response.ErrorListener): StringRequest {
+        return StringRequest(Request.Method.GET, BASE_URL+path, responseListener,errorListener)
+    }
+
+    private fun getRequestBand(
+        path:String,
+        responseListener: Response.Listener<String>,
+        errorListener: Response.ErrorListener): StringRequest {
+        return StringRequest(Request.Method.GET, BASE_URL+path, responseListener,errorListener)
+    }
+
+    private fun getRequestMusician(
+        path:String,
+        responseListener: Response.Listener<String>,
+        errorListener: Response.ErrorListener): StringRequest {
+        return StringRequest(Request.Method.GET, BASE_URL+path, responseListener,errorListener)
     }
 
 }

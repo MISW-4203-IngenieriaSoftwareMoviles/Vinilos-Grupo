@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context=".ui.MainMenuFragment"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="30dp" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:src="@mipmap/logo_vinilos_foreground" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/btn_albumes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Albumes"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                app:cornerRadius="20dp" />
+
+            <Button
+                android:id="@+id/btn_coleccionistas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Coleccionistas"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                app:cornerRadius="20dp" />
+
+            <Button
+                android:id="@+id/btn_artistas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Artistas"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                app:cornerRadius="20dp" />
+
+        </LinearLayout>
+
+
+        <ImageView
+            android:id="@+id/imageMusic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/image_music" />
+
+
+    </LinearLayout>
+
+
+
+
+</FrameLayout>
