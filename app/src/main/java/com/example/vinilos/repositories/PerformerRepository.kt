@@ -18,9 +18,9 @@ class PerformerRepository (val application: Application) {
         )
     }
 
-    fun refreshDataDetailPerformer(id: Int, callback: (Performer) -> Unit, onError: (VolleyError) -> Unit) {
+    fun refreshDataDetailPerformer(id: Int, type: String, callback: (Performer) -> Unit, onError: (VolleyError) -> Unit) {
         //Determinar la fuente de datos que se va a utilizar. Si es necesario consultar la red, ejecutar el siguiente código
-        NetworkServiceAdapter.getInstance(application).getPerformer(id,
+        NetworkServiceAdapter.getInstance(application).getPerformer(id, type,
             {
                 //Guardar los albumes de la variable it en un almacén de datos local para uso futuro
                 callback(it)
