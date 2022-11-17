@@ -36,6 +36,7 @@
                 android:text="Albumes"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textSize="10sp"
+                android:textColor="@color/white"
                 android:textStyle="bold"
                 app:cornerRadius="20dp" />
 
@@ -46,6 +47,7 @@
                 android:text="Coleccionistas"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textSize="10sp"
+                android:textColor="@color/white"
                 android:textStyle="bold"
                 app:cornerRadius="20dp" />
 
@@ -56,6 +58,7 @@
                 android:text="Artistas"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textSize="10sp"
+                android:textColor="@color/white"
                 android:textStyle="bold"
                 app:cornerRadius="20dp" />
 
