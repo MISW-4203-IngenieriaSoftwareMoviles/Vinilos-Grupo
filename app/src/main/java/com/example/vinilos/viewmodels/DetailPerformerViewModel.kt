@@ -6,7 +6,7 @@ import com.example.vinilos.models.Performer
 import com.example.vinilos.network.NetworkServiceAdapter
 import com.example.vinilos.repositories.PerformerRepository
 
-class DetailPerformerViewModel (application: Application, id: Int) : AndroidViewModel(application){
+class DetailPerformerViewModel (application: Application, id: Int, type: String) : AndroidViewModel(application){
 
     private val performerRepository = PerformerRepository(application)
 
@@ -26,13 +26,14 @@ class DetailPerformerViewModel (application: Application, id: Int) : AndroidView
         get() = _isNetworkErrorShown
 
     val id: Int = id
+    val type: String = type
 
     init {
         refreshDataFromNetwork()
     }
 
     private fun refreshDataFromNetwork() {
-        performerRepository.refreshDataDetailPerformer(id, {
+        performerRepository.refreshDataDetailPerformer(id, type, {
             _performer.postValue(it)
             _eventNetworkError.value = false
             _isNetworkErrorShown.value = false
@@ -45,11 +46,11 @@ class DetailPerformerViewModel (application: Application, id: Int) : AndroidView
         _isNetworkErrorShown.value = true
     }
 
-    class Factory(val app: Application, val id: Int) : ViewModelProvider.Factory {
+    class Factory(val app: Application, val id: Int, val type: String) : ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
             if (modelClass.isAssignableFrom(DetailPerformerViewModel::class.java)) {
                 @Suppress("UNCHECKED_CAST")
-                return DetailPerformerViewModel(app, id) as T
+                return DetailPerformerViewModel(app, id, type) as T
             }
             throw IllegalArgumentException("Unable to construct viewmodel")
         }
