@@ -37,8 +37,9 @@ class NetworkServiceAdapter constructor(context: Context) {
             getRequestAlbums("albums",
                 Response.Listener<String> { response ->
                     val resp = JSONArray(response)
+                    var item:JSONObject? = null
                     for (i in 0 until resp.length()) {
-                        val item = resp.getJSONObject(i)
+                        item = resp.getJSONObject(i)
                         list.add(
                             i,
                             Album(
