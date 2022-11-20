@@ -17,14 +17,8 @@ class AlbumRepository(val application: Application) {
         )
     }
 
-    fun refreshDataDetailAlbum(id: Int, callback: (Album) -> Unit, onError: (VolleyError) -> Unit) {
+    suspend fun refreshDataDetailAlbum(id: Int): Album {
         //Determinar la fuente de datos que se va a utilizar. Si es necesario consultar la red, ejecutar el siguiente código
-        NetworkServiceAdapter.getInstance(application).getAlbum(id,
-            {
-                //Guardar los albumes de la variable it en un almacén de datos local para uso futuro
-                callback(it)
-            },
-            onError
-        )
+        return NetworkServiceAdapter.getInstance(application).getAlbum(id)
     }
 }

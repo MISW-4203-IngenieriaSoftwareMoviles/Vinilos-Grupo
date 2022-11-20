@@ -63,29 +63,26 @@ class NetworkServiceAdapter constructor(context: Context) {
         )
     }
 
-    fun getAlbum(
-        id: Int,
-        onComplete: (resp: Album) -> Unit,
-        onError: (error: VolleyError) -> Unit
-    ) {
+    suspend fun getAlbum(
+        id: Int) = suspendCoroutine<Album> { cont->
         requestQueue.add(
             getRequestAlbum("albums/$id",
                 Response.Listener<String> { response ->
                     val item = JSONObject(response)
-                    onComplete(
-                        Album(
-                            albumId = item.getInt("id"),
-                            name = item.getString("name"),
-                            cover = item.getString("cover"),
-                            recordLabel = item.getString("recordLabel"),
-                            releaseDate = item.getString("releaseDate"),
-                            genre = item.getString("genre"),
-                            description = item.getString("description")
-                        )
+                    val album = Album(
+                        albumId = item.getInt("id"),
+                        name = item.getString("name"),
+                        cover = item.getString("cover"),
+                        recordLabel = item.getString("recordLabel"),
+                        releaseDate = item.getString("releaseDate"),
+                        genre = item.getString("genre"),
+                        description = item.getString("description")
+
                     )
+                    cont.resume(album)
                 },
                 Response.ErrorListener {
-                    onError(it)
+                    cont.resumeWithException(it)
                 })
         )
     }
