@@ -123,9 +123,10 @@ class NetworkServiceAdapter constructor(context: Context) {
         requestQueue.add(getRequestBands("bands",
             Response.Listener<String> { response ->
                 val resp = JSONArray(response)
+                var item:JSONObject? = null
                 for (i in 0 until resp.length()) {
-                    val item = resp.getJSONObject(i)
-                    val band = Performer(
+                    item = resp.getJSONObject(i)
+                    list.add(i, Performer(
                         id = item.getInt("id"),
                         name = item.getString("name"),
                         image = item.getString("image"),
@@ -133,7 +134,7 @@ class NetworkServiceAdapter constructor(context: Context) {
                         creationDate = item.getString("creationDate"),
                         birthDate = "",
                         type = "Band")
-                    list.add(i, band)
+                    )
                 }
                 //cont.resume(list)
             },
@@ -143,17 +144,18 @@ class NetworkServiceAdapter constructor(context: Context) {
         requestQueue.add(getRequestMusicians("musicians",
             Response.Listener<String> { response ->
                 val resp = JSONArray(response)
+                var item2:JSONObject? = null
                 for (i in 0 until resp.length()) {
-                    val item = resp.getJSONObject(i)
-                    val musician = Performer(
-                        id = item.getInt("id"),
-                        name = item.getString("name"),
-                        image = item.getString("image"),
-                        description = item.getString("description"),
+                    item2 = resp.getJSONObject(i)
+                    list.add(i,  Performer(
+                        id = item2.getInt("id"),
+                        name = item2.getString("name"),
+                        image = item2.getString("image"),
+                        description = item2.getString("description"),
                         creationDate = "",
-                        birthDate = item.getString("birthDate"),
+                        birthDate = item2.getString("birthDate"),
                         type = "Musician")
-                    list.add(i, musician)
+                    )
                 }
                 cont.resume(list)
             },
