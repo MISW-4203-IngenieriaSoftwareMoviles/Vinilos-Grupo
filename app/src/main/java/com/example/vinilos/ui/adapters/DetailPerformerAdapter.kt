@@ -58,9 +58,8 @@ class DetailPerformerAdapter: RecyclerView.Adapter<DetailPerformerAdapter.Detail
                 .apply(
                     RequestOptions()
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .placeholder(R.drawable.loading_animation)
                         .error(R.drawable.ic_broken_image))
-//                        .placeholder(R.drawable.loading_animation)
-//                        .error(R.drawable.ic_broken_image))
                 .into(viewDataBinding.imageDetailPerformer)
         }
     }
