@@ -112,42 +112,40 @@ class NetworkServiceAdapter constructor(context: Context) {
                     }
                     cont.resume(list)
                 },
-                {
+                Response.ErrorListener{
                     cont.resumeWithException(it)
                 }))
-                /*Response.ErrorListener {
-                    throw it
-                }))*/
-        //return list
+
     }
 
-    fun getBands(onComplete:(resp:List<Performer>)->Unit, onError: (error:VolleyError)->Unit){
+    suspend fun getBands() = suspendCoroutine<List<Performer>> { cont->
         val list = mutableListOf<Performer>()
         requestQueue.add(getRequestBands("bands",
             Response.Listener<String> { response ->
                 val resp = JSONArray(response)
                 for (i in 0 until resp.length()) {
                     val item = resp.getJSONObject(i)
-                    list.add(i, Performer(
+                    val band = Performer(
                         id = item.getInt("id"),
                         name = item.getString("name"),
                         image = item.getString("image"),
                         description = item.getString("description"),
                         creationDate = item.getString("creationDate"),
                         birthDate = "",
-                        type = "Band"
-                    ))
+                        type = "Band")
+                    list.add(i, band)
                 }
+                //cont.resume(list)
             },
             Response.ErrorListener {
-                onError(it)
+                cont.resumeWithException(it)
             }))
         requestQueue.add(getRequestMusicians("musicians",
             Response.Listener<String> { response ->
                 val resp = JSONArray(response)
                 for (i in 0 until resp.length()) {
                     val item = resp.getJSONObject(i)
-                    list.add(i, Performer(
+                    val musician = Performer(
                         id = item.getInt("id"),
                         name = item.getString("name"),
                         image = item.getString("image"),
@@ -155,13 +153,14 @@ class NetworkServiceAdapter constructor(context: Context) {
                         creationDate = "",
                         birthDate = item.getString("birthDate"),
                         type = "Musician")
-                    )
+                    list.add(i, musician)
                 }
-                onComplete(list)
+                cont.resume(list)
             },
             Response.ErrorListener {
-                onError(it)
+                cont.resumeWithException(it)
             }))
+
     }
 
     suspend fun getPerformer(
