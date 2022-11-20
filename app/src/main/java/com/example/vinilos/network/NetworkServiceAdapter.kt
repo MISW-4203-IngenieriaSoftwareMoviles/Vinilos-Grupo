@@ -112,22 +112,20 @@ class NetworkServiceAdapter constructor(context: Context) {
                     }
                     cont.resume(list)
                 },
-                {
+                Response.ErrorListener{
                     cont.resumeWithException(it)
                 }))
-                /*Response.ErrorListener {
-                    throw it
-                }))*/
-        //return list
+
     }
 
-    fun getBands(onComplete:(resp:List<Performer>)->Unit, onError: (error:VolleyError)->Unit){
+    suspend fun getBands() = suspendCoroutine<List<Performer>> { cont->
         val list = mutableListOf<Performer>()
         requestQueue.add(getRequestBands("bands",
             Response.Listener<String> { response ->
                 val resp = JSONArray(response)
+                var item:JSONObject? = null
                 for (i in 0 until resp.length()) {
-                    val item = resp.getJSONObject(i)
+                    item = resp.getJSONObject(i)
                     list.add(i, Performer(
                         id = item.getInt("id"),
                         name = item.getString("name"),
@@ -135,33 +133,36 @@ class NetworkServiceAdapter constructor(context: Context) {
                         description = item.getString("description"),
                         creationDate = item.getString("creationDate"),
                         birthDate = "",
-                        type = "Band"
-                    ))
+                        type = "Band")
+                    )
                 }
+                //cont.resume(list)
             },
             Response.ErrorListener {
-                onError(it)
+                cont.resumeWithException(it)
             }))
         requestQueue.add(getRequestMusicians("musicians",
             Response.Listener<String> { response ->
                 val resp = JSONArray(response)
+                var item2:JSONObject? = null
                 for (i in 0 until resp.length()) {
-                    val item = resp.getJSONObject(i)
-                    list.add(i, Performer(
-                        id = item.getInt("id"),
-                        name = item.getString("name"),
-                        image = item.getString("image"),
-                        description = item.getString("description"),
+                    item2 = resp.getJSONObject(i)
+                    list.add(i,  Performer(
+                        id = item2.getInt("id"),
+                        name = item2.getString("name"),
+                        image = item2.getString("image"),
+                        description = item2.getString("description"),
                         creationDate = "",
-                        birthDate = item.getString("birthDate"),
+                        birthDate = item2.getString("birthDate"),
                         type = "Musician")
                     )
                 }
-                onComplete(list)
+                cont.resume(list)
             },
             Response.ErrorListener {
-                onError(it)
+                cont.resumeWithException(it)
             }))
+
     }
 
     suspend fun getPerformer(
