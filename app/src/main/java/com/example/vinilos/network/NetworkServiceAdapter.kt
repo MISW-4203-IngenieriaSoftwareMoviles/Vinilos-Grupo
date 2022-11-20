@@ -10,6 +10,9 @@ import com.android.volley.toolbox.Volley
 import com.example.vinilos.models.*
 import org.json.JSONArray
 import org.json.JSONObject
+import kotlin.coroutines.resume
+import kotlin.coroutines.resumeWithException
+import kotlin.coroutines.suspendCoroutine
 
 class NetworkServiceAdapter constructor(context: Context) {
     companion object {
@@ -87,51 +90,35 @@ class NetworkServiceAdapter constructor(context: Context) {
         )
     }
 
-    fun getCollectors(
-        onComplete: (resp: List<Collector>) -> Unit,
-        onError: (error: VolleyError) -> Unit
-    ) {
+    suspend fun getCollectors() = suspendCoroutine<List<Collector>> { cont->
+        val list = mutableListOf<Collector>()
         requestQueue.add(
             getRequestCollectors("collectors",
                 Response.Listener<String> { response ->
                     val resp = JSONArray(response)
-                    val list = mutableListOf<Collector>()
+                    var item:JSONObject? = null
                     for (i in 0 until resp.length()) {
-                        val item = resp.getJSONObject(i)
-                        val performers = item.getJSONArray("favoritePerformers")
-                        //val listFavoritePerformer = mutableListOf<Performer>()
-                        /*for (i in 0 until performers.length()) {
-                            val performer = performers.getJSONObject(i)
-                            listFavoritePerformer.add(
-                                i,
-                                Performer(
-                                    id = performer.getInt("id"),
-                                    name = performer.getString("name"),
-                                    image = performer.getString("image"),
-                                    description = performer.getString("description"),
-                                    birthDate = "",
-                                    creationDate = "",
-                                    type = ""
-                                )
-                            )
-                        }*/
+                        item = resp.getJSONObject(i)
+                        //val performers = item.getJSONArray("favoritePerformers")
                         list.add(
-                            i,
+                            //i,
                             Collector(
                                 id = item.getInt("id"),
                                 name = item.getString("name"),
                                 telephone = item.getString("telephone"),
                                 email = item.getString("email")
-                                //favoritePerformers = listFavoritePerformer
                             )
                         )
                     }
-                    onComplete(list)
+                    cont.resume(list)
                 },
-                Response.ErrorListener {
-                    onError(it)
-                })
-        )
+                {
+                    cont.resumeWithException(it)
+                }))
+                /*Response.ErrorListener {
+                    throw it
+                }))*/
+        //return list
     }
 
     fun getBands(onComplete:(resp:List<Performer>)->Unit, onError: (error:VolleyError)->Unit){
