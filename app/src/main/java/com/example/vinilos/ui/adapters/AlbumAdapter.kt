@@ -11,11 +11,8 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.example.vinilos.R
-import com.example.vinilos.databinding.AlbumFragmentBinding
 import com.example.vinilos.databinding.AlbumItemBinding
-import com.example.vinilos.databinding.DetailAlbumFragmentBinding
 import com.example.vinilos.models.Album
-import com.example.vinilos.models.Collector
 import com.example.vinilos.ui.AlbumFragmentDirections
 
 class AlbumAdapter : RecyclerView.Adapter<AlbumAdapter.AlbumViewHolder>(){
