@@ -1,5 +1,6 @@
 package com.example.vinilos.ui.adapters
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
@@ -16,6 +17,7 @@ import com.example.vinilos.databinding.DetailPerformerFragmentBinding
 class DetailPerformerAdapter: RecyclerView.Adapter<DetailPerformerAdapter.DetailPerformerViewHolder>() {
 
     var performer : Performer? = null
+        @SuppressLint("NotifyDataSetChanged")
         set(value) {
             field = value
             notifyDataSetChanged()
