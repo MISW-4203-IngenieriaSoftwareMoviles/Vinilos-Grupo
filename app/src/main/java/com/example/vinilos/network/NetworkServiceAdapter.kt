@@ -10,6 +10,9 @@ import com.android.volley.toolbox.Volley
 import com.example.vinilos.models.*
 import org.json.JSONArray
 import org.json.JSONObject
+import kotlin.coroutines.resume
+import kotlin.coroutines.resumeWithException
+import kotlin.coroutines.suspendCoroutine
 
 class NetworkServiceAdapter constructor(context: Context) {
     companion object {
@@ -177,31 +180,28 @@ class NetworkServiceAdapter constructor(context: Context) {
             }))
     }
 
-    fun getPerformer(
+    suspend fun getPerformer(
         id: Int,
-        type: String,
-        onComplete: (resp: Performer) -> Unit,
-        onError: (error: VolleyError) -> Unit
-    ) {
+        type: String
+    ) = suspendCoroutine<Performer> { cont->
         if(type == "Band"){
             requestQueue.add(
                 getRequestBand("bands/$id",
                     Response.Listener<String> { response ->
                         val item = JSONObject(response)
-                        onComplete(
-                            Performer(
-                                id = item.getInt("id"),
-                                name = item.getString("name"),
-                                image = item.getString("image"),
-                                description = item.getString("description"),
-                                creationDate = item.getString("creationDate"),
-                                birthDate = "",
-                                type = "Band"
-                            )
+                        val performer = Performer(
+                            id = item.getInt("id"),
+                            name = item.getString("name"),
+                            image = item.getString("image"),
+                            description = item.getString("description"),
+                            creationDate = item.getString("creationDate"),
+                            birthDate = "",
+                            type = "Band"
                         )
+                        cont.resume(performer)
                     },
                     Response.ErrorListener {
-                        onError(it)
+                        cont.resumeWithException(it)
                     })
             )
         }else{
@@ -209,20 +209,19 @@ class NetworkServiceAdapter constructor(context: Context) {
                 getRequestMusician("musicians/$id",
                     Response.Listener<String> { response ->
                         val item = JSONObject(response)
-                        onComplete(
-                            Performer(
-                                id = item.getInt("id"),
-                                name = item.getString("name"),
-                                image = item.getString("image"),
-                                description = item.getString("description"),
-                                creationDate = "",
-                                birthDate = item.getString("birthDate"),
-                                type = "Musician"
-                            )
+                        val performer = Performer(
+                            id = item.getInt("id"),
+                            name = item.getString("name"),
+                            image = item.getString("image"),
+                            description = item.getString("description"),
+                            creationDate = "",
+                            birthDate = item.getString("birthDate"),
+                            type = "Musician"
                         )
+                        cont.resume(performer)
                     },
                     Response.ErrorListener {
-                        onError(it)
+                        cont.resumeWithException(it)
                     })
             )
         }
