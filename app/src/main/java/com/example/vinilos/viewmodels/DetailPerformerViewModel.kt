@@ -1,14 +1,6 @@
 package com.example.vinilos.viewmodels
 
 import android.app.Application
-<<<<<<< HEAD
-import androidx.lifecycle.*
-import com.example.vinilos.models.Performer
-import com.example.vinilos.network.NetworkServiceAdapter
-import com.example.vinilos.repositories.PerformerRepository
-
-class DetailPerformerViewModel (application: Application, id: Int) : AndroidViewModel(application){
-=======
 import android.util.Log
 import androidx.lifecycle.*
 import com.example.vinilos.models.Performer
@@ -18,7 +10,6 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class DetailPerformerViewModel (application: Application, id: Int, type: String) : AndroidViewModel(application){
->>>>>>> 8c68ec70115452a691a30d41b3ba5359665a72d5
 
     private val performerRepository = PerformerRepository(application)
 
@@ -38,10 +29,7 @@ class DetailPerformerViewModel (application: Application, id: Int, type: String)
         get() = _isNetworkErrorShown
 
     val id: Int = id
-<<<<<<< HEAD
-=======
     val type: String = type
->>>>>>> 8c68ec70115452a691a30d41b3ba5359665a72d5
 
     init {
         refreshDataFromNetwork()
