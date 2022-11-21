@@ -3,11 +3,9 @@ package com.example.vinilos.ui
 
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.*
 import androidx.test.espresso.assertion.ViewAssertions.*
-import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -22,16 +20,17 @@ import org.hamcrest.core.IsInstanceOf
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+
 @LargeTest
 @RunWith(AndroidJUnit4::class)
-class HU02TestDetalleAlbum {
+class HU03_Test_ListadoArtistas {
 
     @Rule
     @JvmField
     var mActivityScenarioRule = ActivityScenarioRule(MainActivity::class.java)
 
     @Test
-    fun detalleAlbumTest() {
+    fun listarArtistasTest() {
         val materialButton = onView(
             allOf(
                 withId(R.id.btn_visitante), withText("SOY VISITANTE"),
@@ -46,41 +45,30 @@ class HU02TestDetalleAlbum {
             )
         )
         materialButton.perform(click())
-        Thread.sleep(5_000)
+        Thread.sleep(3_000)
         val materialButton2 = onView(
             allOf(
-                withId(R.id.btn_albumes), withText("Albumes"),
+                withId(R.id.btn_artistas), withText("Artistas"),
                 childAtPosition(
                     childAtPosition(
                         withClassName(`is`("android.widget.LinearLayout")),
                         2
                     ),
-                    0
+                    2
                 ),
                 isDisplayed()
             )
         )
         materialButton2.perform(click())
         Thread.sleep(3_000)
-        val recyclerView = onView(
-            allOf(
-                withId(R.id.fragments_rv),
-                childAtPosition(
-                    withClassName(`is`("android.widget.LinearLayout")),
-                    4
-                )
-            )
-        )
-        recyclerView.perform(actionOnItemAtPosition<ViewHolder>(1, click()))
-        Thread.sleep(3_000)
         val textView = onView(
             allOf(
-                withId(R.id.album_gen_det), withText("Salsa"),
-                withParent(withParent(IsInstanceOf.instanceOf(android.view.ViewGroup::class.java))),
+                withId(R.id.performer_name), withText("Queen"),
+                withParent(withParent(IsInstanceOf.instanceOf(androidx.cardview.widget.CardView::class.java))),
                 isDisplayed()
             )
         )
-        textView.check(matches(withText("Salsa")))
+        textView.check(matches(withText("Queen")))
     }
 
     private fun childAtPosition(
