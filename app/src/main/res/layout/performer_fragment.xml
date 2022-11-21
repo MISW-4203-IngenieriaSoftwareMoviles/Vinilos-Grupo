@@ -11,7 +11,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center_horizontal"
+<<<<<<< HEAD
         android:orientation="vertical">
+=======
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
+>>>>>>> 8c68ec70115452a691a30d41b3ba5359665a72d5
 
         <ImageView
             android:id="@+id/imageView"

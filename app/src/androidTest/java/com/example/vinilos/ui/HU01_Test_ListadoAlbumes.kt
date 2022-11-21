@@ -36,12 +36,27 @@ class H001ListarAlbumes {
                         withClassName(`is`("android.widget.FrameLayout")),
                         0
                     ),
-                    2
+                    5
                 ),
                 isDisplayed()
             )
         )
         materialButton.perform(click())
+        Thread.sleep(5_000)
+        val materialButton2 = onView(
+            allOf(
+                withId(R.id.btn_albumes), withText("Albumes"),
+                childAtPosition(
+                    childAtPosition(
+                        withClassName(`is`("android.widget.LinearLayout")),
+                        2
+                    ),
+                    0
+                ),
+                isDisplayed()
+            )
+        )
+        materialButton2.perform(click())
         Thread.sleep(5_000)
         val textView = onView(
             allOf(

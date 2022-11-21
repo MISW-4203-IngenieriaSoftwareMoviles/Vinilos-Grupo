@@ -11,7 +11,12 @@
         android:layout_width="260dp"
         android:layout_height="match_parent"
         android:layout_gravity="center_horizontal"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="30dp" />
 
         <Space
             android:layout_width="match_parent"
@@ -34,6 +39,10 @@
             android:text="SOY COLECCIONISTA"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textSize="20sp"
+<<<<<<< HEAD
+=======
+            android:textColor="@color/white"
+>>>>>>> 8c68ec70115452a691a30d41b3ba5359665a72d5
             android:textStyle="bold"
             app:cornerRadius="20dp" />
         <Space
@@ -41,14 +50,19 @@
             android:layout_height="30dp" />
 
         <Button
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8c68ec70115452a691a30d41b3ba5359665a72d5
             android:id="@+id/btn_visitante"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="SOY VISITANTE"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textSize="20sp"
+            android:textColor="@color/white"
             android:textStyle="bold"
             app:cornerRadius="20dp" />
+
     </LinearLayout>
 </FrameLayout>

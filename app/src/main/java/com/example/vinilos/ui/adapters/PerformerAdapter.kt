@@ -1,5 +1,6 @@
 package com.example.vinilos.ui.adapters
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
@@ -18,6 +19,7 @@ import com.example.vinilos.ui.PerformerFragmentDirections
 class PerformerAdapter : RecyclerView.Adapter<PerformerAdapter.PerformerViewHolder>(){
 
     var performers :List<Performer> = emptyList()
+        @SuppressLint("NotifyDataSetChanged")
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -37,11 +39,11 @@ class PerformerAdapter : RecyclerView.Adapter<PerformerAdapter.PerformerViewHold
             it.performer = performers[position]
         }
         holder.bind(performers[position])
-        /*holder.viewDataBinding.root.setOnClickListener {
-            val action = PerformerFragmentDirections.actionPerformerFragmentToDetailPerformerFragment(performers[position].id)
+        holder.viewDataBinding.root.setOnClickListener {
+            val action = PerformerFragmentDirections.actionPerformerFragmentToDetailPerformerFragment(performers[position].id, performers[position].type)
             // Navigate using that action
             holder.viewDataBinding.root.findNavController().navigate(action)
-        }*/
+        }
     }
 
     override fun getItemCount(): Int {
@@ -62,9 +64,8 @@ class PerformerAdapter : RecyclerView.Adapter<PerformerAdapter.PerformerViewHold
                 .apply(
                     RequestOptions()
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .placeholder(R.drawable.loading_animation)
                         .error(R.drawable.ic_broken_image))
-//                        .placeholder(R.drawable.loading_animation)
-//                        .error(R.drawable.ic_broken_image))
                 .into(viewDataBinding.imageView)
         }
     }

@@ -22,16 +22,18 @@ import org.hamcrest.core.IsInstanceOf
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+
 @LargeTest
 @RunWith(AndroidJUnit4::class)
-class HU02TestDetalleAlbum {
+class HU04_Test_DetalleArtista {
 
     @Rule
     @JvmField
     var mActivityScenarioRule = ActivityScenarioRule(MainActivity::class.java)
 
     @Test
-    fun detalleAlbumTest() {
+    fun detalleArtistaTest() {
+        Thread.sleep(2_000)
         val materialButton = onView(
             allOf(
                 withId(R.id.btn_visitante), withText("SOY VISITANTE"),
@@ -46,16 +48,16 @@ class HU02TestDetalleAlbum {
             )
         )
         materialButton.perform(click())
-        Thread.sleep(5_000)
+        Thread.sleep(3_000)
         val materialButton2 = onView(
             allOf(
-                withId(R.id.btn_albumes), withText("Albumes"),
+                withId(R.id.btn_artistas), withText("Artistas"),
                 childAtPosition(
                     childAtPosition(
                         withClassName(`is`("android.widget.LinearLayout")),
                         2
                     ),
-                    0
+                    2
                 ),
                 isDisplayed()
             )
@@ -71,16 +73,16 @@ class HU02TestDetalleAlbum {
                 )
             )
         )
-        recyclerView.perform(actionOnItemAtPosition<ViewHolder>(1, click()))
+        recyclerView.perform(actionOnItemAtPosition<ViewHolder>(0, click()))
         Thread.sleep(3_000)
-        val textView = onView(
+        val imageView = onView(
             allOf(
-                withId(R.id.album_gen_det), withText("Salsa"),
+                withId(R.id.imageDetailPerformer),
                 withParent(withParent(IsInstanceOf.instanceOf(android.view.ViewGroup::class.java))),
                 isDisplayed()
             )
         )
-        textView.check(matches(withText("Salsa")))
+        imageView.check(matches(isDisplayed()))
     }
 
     private fun childAtPosition(

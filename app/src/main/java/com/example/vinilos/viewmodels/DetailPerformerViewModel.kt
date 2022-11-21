@@ -1,12 +1,15 @@
 package com.example.vinilos.viewmodels
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.*
 import com.example.vinilos.models.Performer
-import com.example.vinilos.network.NetworkServiceAdapter
 import com.example.vinilos.repositories.PerformerRepository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
-class DetailPerformerViewModel (application: Application, id: Int) : AndroidViewModel(application){
+class DetailPerformerViewModel (application: Application, id: Int, type: String) : AndroidViewModel(application){
 
     private val performerRepository = PerformerRepository(application)
 
@@ -26,30 +29,38 @@ class DetailPerformerViewModel (application: Application, id: Int) : AndroidView
         get() = _isNetworkErrorShown
 
     val id: Int = id
+    val type: String = type
 
     init {
         refreshDataFromNetwork()
     }
 
     private fun refreshDataFromNetwork() {
-        performerRepository.refreshDataDetailPerformer(id, {
-            _performer.postValue(it)
-            _eventNetworkError.value = false
-            _isNetworkErrorShown.value = false
-        }, {
+        try{
+            viewModelScope.launch(Dispatchers.Default) {
+                withContext(Dispatchers.IO) {
+                    var data = performerRepository.refreshDataDetailPerformer(id, type)
+                    _performer.postValue(data)
+                }
+                _eventNetworkError.postValue(false)
+                _isNetworkErrorShown.postValue(false)
+            }
+        }catch (e: Exception){
+            Log.d("Error", e.toString())
             _eventNetworkError.value = true
-        })
+        }
+
     }
 
     fun onNetworkErrorShown() {
         _isNetworkErrorShown.value = true
     }
 
-    class Factory(val app: Application, val id: Int) : ViewModelProvider.Factory {
+    class Factory(val app: Application, val id: Int, val type: String) : ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
             if (modelClass.isAssignableFrom(DetailPerformerViewModel::class.java)) {
                 @Suppress("UNCHECKED_CAST")
-                return DetailPerformerViewModel(app, id) as T
+                return DetailPerformerViewModel(app, id, type) as T
             }
             throw IllegalArgumentException("Unable to construct viewmodel")
         }

@@ -25,13 +25,17 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            tools:ignore="UseCompoundDrawables">
 
             <ImageView
                 android:id="@+id/imageViewAlbum"
                 android:layout_width="60dp"
                 android:layout_height="match_parent" />
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8c68ec70115452a691a30d41b3ba5359665a72d5
 
             <TextView
                 android:id="@+id/album_name"
