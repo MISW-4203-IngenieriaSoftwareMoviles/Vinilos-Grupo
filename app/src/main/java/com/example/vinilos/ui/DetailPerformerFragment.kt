@@ -49,13 +49,13 @@ class DetailPerformerFragment: Fragment()  {
             "You can only access the viewModel after onActivityCreated()"
         }
         activity.actionBar?.title = getString(R.string.title_Performers)
-        val args: DetailAlbumFragmentArgs by navArgs()
-        Log.d("Args", args.id.toString())
-        viewModel = ViewModelProvider(this, DetailPerformerViewModel.Factory(activity.application, args.id)).get(
+        val args: DetailPerformerFragmentArgs by navArgs()
+        Log.d("Args", args.type)
+        viewModel = ViewModelProvider(this, DetailPerformerViewModel.Factory(activity.application, args.id, args.type)).get(
             DetailPerformerViewModel::class.java)
         viewModel.performer.observe(viewLifecycleOwner, Observer<Performer> {
             it.apply {
-                viewModelAdapter!!.peformer = this
+                viewModelAdapter!!.performer = this
             }
         })
         viewModel.eventNetworkError.observe(viewLifecycleOwner, Observer<Boolean> { isNetworkError ->
