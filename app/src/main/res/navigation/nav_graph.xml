@@ -12,6 +12,9 @@
         <action
             android:id="@+id/action_firstPageFragment_to_mainMenuFragment"
             app:destination="@id/mainMenuFragment" />
+        <action
+            android:id="@+id/action_firstPageFragment_to_albumsCollectorFragment"
+            app:destination="@id/albumsCollectorFragment" />
     </fragment>
 
     <fragment
@@ -33,9 +36,6 @@
             android:id="@+id/main_menu_to_performer_fragment"
             app:destination="@id/performerFragment" />
     </fragment>
-
-
-
 
 
     <fragment
@@ -85,5 +85,14 @@
         <argument
             android:name="type"
             app:argType="string" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/albumsCollectorFragment"
+        android:name="com.example.vinilos.ui.AlbumsCollectorFragment"
+        android:label="albums_collector_fragment"
+        tools:layout="@layout/albums_collector_fragment" >
+
     </fragment>
 </navigation>
