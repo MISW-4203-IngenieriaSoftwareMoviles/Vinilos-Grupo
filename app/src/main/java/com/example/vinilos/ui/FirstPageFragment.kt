@@ -36,7 +36,7 @@ class FirstPageFragment : Fragment() {
 
         binding.btnColeccionista.setOnClickListener {
 
-            findNavController().navigate(R.id.mainMenuFragment)
+            findNavController().navigate(R.id.albumsCollectorFragment)
 
         }
 
