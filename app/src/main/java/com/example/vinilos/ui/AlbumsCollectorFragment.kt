@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vinilos.databinding.AlbumsCollectorFragmentBinding
@@ -39,6 +40,10 @@ class AlbumsCollectorFragment : Fragment() {
         recyclerView = binding.fragmentsRv
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = viewModelAdapter
+
+        binding.btnCrearAlbum.setOnClickListener {
+            findNavController().navigate(R.id.createAlbumFragment)
+        }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

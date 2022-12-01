@@ -93,6 +93,21 @@
         android:name="com.example.vinilos.ui.AlbumsCollectorFragment"
         android:label="albums_collector_fragment"
         tools:layout="@layout/albums_collector_fragment" >
+        <action
+            android:id="@+id/action_albumsCollectorFragment_to_createAlbumFragment"
+            app:destination="@id/createAlbumFragment" />
 
     </fragment>
+    <fragment
+        android:id="@+id/createAlbumFragment"
+        android:name="com.example.vinilos.ui.CreateAlbumFragment"
+        android:label="create_album_fragment"
+        tools:layout="@layout/create_album_fragment">
+        <action
+            android:id="@+id/action_createAlbumFragment_to_albumsCollectorFragment"
+            app:destination="@id/albumsCollectorFragment" />
+
+    </fragment>
+
+
 </navigation>
