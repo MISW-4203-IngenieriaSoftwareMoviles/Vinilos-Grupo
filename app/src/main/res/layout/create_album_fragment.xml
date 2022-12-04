@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- TODO: Update blank fragment layout -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.CreateAlbumFragment"
+    android:layout_marginStart="20dp"
+    android:layout_marginEnd="20dp">
+
+    <TextView
+        android:id="@+id/title_album_create"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:text="Crear Álbum"
+        android:layout_marginTop="40dp"/>
+
+    <TextView
+        android:id="@+id/title_name_album_cr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:text="Nombre:"
+        android:layout_marginTop="30dp"/>
+
+    <EditText
+        android:id="@+id/album_name_cr"
+        android:layout_width="match_parent"
+        android:background="@color/white"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:id="@+id/title_cover_album_cr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:text="Url Cover:"
+        android:layout_marginTop="30dp"/>
+
+    <EditText
+        android:id="@+id/album_cover_cr"
+        android:layout_width="match_parent"
+        android:background="@color/white"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:id="@+id/title_date_album_cr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:text="Fecha de lanzamiento:"
+        android:layout_marginTop="30dp"/>
+
+    <EditText
+        android:id="@+id/album_date_cr"
+        android:layout_width="match_parent"
+        android:background="@color/white"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="datetime"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:id="@+id/title_desc_album_cr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:text="Descripción:"
+        android:layout_marginTop="30dp"/>
+
+    <EditText
+        android:id="@+id/album_desc_cr"
+        android:layout_width="match_parent"
+        android:background="@color/white"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:id="@+id/title_name_gen_cr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:text="Género:"
+        android:layout_marginTop="30dp"/>
+
+    <EditText
+        android:id="@+id/album_gen_cr"
+        android:layout_width="match_parent"
+        android:background="@color/white"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:id="@+id/title_reclab_album_cr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:text="Sello discográfico:"
+        android:layout_marginTop="30dp"/>
+
+    <EditText
+        android:id="@+id/album_reclab_cr"
+        android:layout_width="match_parent"
+        android:background="@color/white"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:layout_marginTop="10dp"/>
+
+    <Button
+        android:id="@+id/btn_crear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cornerRadius="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="20dp"
+        android:text="Crear" />
+
+</LinearLayout>

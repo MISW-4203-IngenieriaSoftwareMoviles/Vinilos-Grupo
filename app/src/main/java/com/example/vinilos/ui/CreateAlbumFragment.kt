@@ -2,17 +2,17 @@ package com.example.vinilos.ui
 
 import android.os.Bundle
 import android.util.Log
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.vinilos.R
-import com.example.vinilos.databinding.FragmentFirstPageBinding
+import com.example.vinilos.databinding.CreateAlbumFragmentBinding
 
-class FirstPageFragment : Fragment() {
+class CreateAlbumFragment : Fragment() {
 
-    private var _binding: FragmentFirstPageBinding? = null
+    private var _binding: CreateAlbumFragmentBinding? = null
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
@@ -22,7 +22,7 @@ class FirstPageFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        _binding = FragmentFirstPageBinding.inflate(inflater, container, false)
+        _binding = CreateAlbumFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -30,14 +30,8 @@ class FirstPageFragment : Fragment() {
         Log.i("onViewCreated","onViewCreated")
         super.onViewCreated(view, savedInstanceState)
 
-        binding.btnVisitante.setOnClickListener {
-            findNavController().navigate(R.id.mainMenuFragment)
-        }
-
-        binding.btnColeccionista.setOnClickListener {
-
+        binding.btnCrear.setOnClickListener {
             findNavController().navigate(R.id.albumsCollectorFragment)
-
         }
 
     }
