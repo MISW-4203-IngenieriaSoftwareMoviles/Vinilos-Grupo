@@ -3,10 +3,12 @@ package com.example.vinilos.viewmodels
 import android.app.Application
 import androidx.lifecycle.*
 import com.example.vinilos.models.Album
+import com.example.vinilos.models.Track
 import com.example.vinilos.repositories.AlbumRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import org.json.JSONObject
 
 
 class AlbumViewModel(application: Application) : AndroidViewModel(application) {
@@ -15,8 +17,13 @@ class AlbumViewModel(application: Application) : AndroidViewModel(application) {
 
     private val _albums = MutableLiveData<List<Album>>()
 
+    private val _track = MutableLiveData<Track>()
+
     val albums: LiveData<List<Album>>
         get() = _albums
+
+    val track: LiveData<Track>
+        get() = _track
 
     private var _eventNetworkError = MutableLiveData<Boolean>(false)
 
@@ -30,6 +37,7 @@ class AlbumViewModel(application: Application) : AndroidViewModel(application) {
 
     init {
         refreshDataFromNetwork()
+        //associateTrackFromNetwork()
     }
 
     private fun refreshDataFromNetwork() {
@@ -47,6 +55,25 @@ class AlbumViewModel(application: Application) : AndroidViewModel(application) {
             _eventNetworkError.value = true
         }
 
+    }
+
+    suspend fun associateTrackFromNetwork(track: JSONObject):Int {
+        var id:Int=0
+        try {
+            viewModelScope.launch (Dispatchers.Default){
+                withContext(Dispatchers.IO){
+                    var data = albumsRepository.refreshDataAssociateTrack(track)
+                    _track.postValue(data)
+                    id=data.album.albumId
+                }
+                _eventNetworkError.postValue(false)
+                _isNetworkErrorShown.postValue(false)
+            }
+        }
+        catch (e:Exception){
+            _eventNetworkError.value = true
+        }
+        return id
     }
 
     fun onNetworkErrorShown() {

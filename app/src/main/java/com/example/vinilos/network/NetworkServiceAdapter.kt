@@ -4,6 +4,7 @@ import android.content.Context
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.Response
+import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.vinilos.models.*
@@ -15,7 +16,7 @@ import kotlin.coroutines.suspendCoroutine
 
 class NetworkServiceAdapter constructor(context: Context) {
     companion object {
-        const val BASE_URL = "https://misw-4203-vinilos-grupo12.herokuapp.com/"
+        const val BASE_URL = "https://grupo11-vynils-back.herokuapp.com/"
         var instance: NetworkServiceAdapter? = null
         fun getInstance(context: Context) =
             instance ?: synchronized(this) {
@@ -204,7 +205,18 @@ class NetworkServiceAdapter constructor(context: Context) {
                     })
             )
         }
+    }
 
+    suspend fun associateTrack(body: JSONObject, idAlbum: Int) = suspendCoroutine<Track>{ cont->
+        requestQueue.add(postRequestAssociateTrack("albums/$idAlbum/tracks", body,
+            { response ->
+                val track=Track(name = response.getString("name"), duration = response.getString("duration"))
+                    //albumId = response.getInt("id"),name = response.getString("name"), cover = response.getString("cover"), recordLabel = response.getString("recordLabel"), releaseDate = response.getString("releaseDate"), genre = response.getString("genre"), description = response.getString("description"))
+                cont.resume(track)
+            },
+            {
+                cont.resumeWithException(it)
+            }))
     }
 
     private fun getRequestAlbums(
@@ -259,4 +271,13 @@ class NetworkServiceAdapter constructor(context: Context) {
         return StringRequest(Request.Method.GET, BASE_URL+path, responseListener,errorListener)
     }
 
+    private fun postRequestAssociateTrack(path: String, body: JSONObject,  responseListener: Response.Listener<JSONObject>, errorListener: Response.ErrorListener ): JsonObjectRequest {
+        return JsonObjectRequest(
+            Request.Method.POST,
+            BASE_URL + path,
+            body,
+            responseListener,
+            errorListener
+        )
+    }
 }
