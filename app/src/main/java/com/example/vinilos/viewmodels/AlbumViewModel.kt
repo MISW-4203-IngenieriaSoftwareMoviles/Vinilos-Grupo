@@ -3,20 +3,26 @@ package com.example.vinilos.viewmodels
 import android.app.Application
 import androidx.lifecycle.*
 import com.example.vinilos.models.Album
+import com.example.vinilos.models.Track
 import com.example.vinilos.repositories.AlbumRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import org.json.JSONObject
 
 
 class AlbumViewModel(application: Application) : AndroidViewModel(application) {
-
     private val albumsRepository = AlbumRepository(application)
 
     private val _albums = MutableLiveData<List<Album>>()
 
+    private val _track = MutableLiveData<Track>()
+
     val albums: LiveData<List<Album>>
         get() = _albums
+
+    val track: LiveData<Track>
+        get() = _track
 
     private var _eventNetworkError = MutableLiveData<Boolean>(false)
 
@@ -62,4 +68,5 @@ class AlbumViewModel(application: Application) : AndroidViewModel(application) {
             throw IllegalArgumentException("Unable to construct viewmodel")
         }
     }
+
 }
