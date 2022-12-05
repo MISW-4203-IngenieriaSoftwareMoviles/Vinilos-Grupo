@@ -28,6 +28,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/white"
         android:text="Nombre:"
+        android:labelFor="@id/album_name_cr"
         android:layout_marginTop="30dp"/>
 
     <EditText
@@ -45,6 +46,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/white"
         android:text="Url Cover:"
+        android:labelFor="@id/album_cover_cr"
         android:layout_marginTop="30dp"/>
 
     <EditText
@@ -62,6 +64,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/white"
         android:text="Fecha de lanzamiento:"
+        android:labelFor="@id/album_date_cr"
         android:layout_marginTop="30dp"/>
 
     <EditText
@@ -79,6 +82,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/white"
         android:text="Descripción:"
+        android:labelFor="@id/album_desc_cr"
         android:layout_marginTop="30dp"/>
 
     <EditText
@@ -96,6 +100,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/white"
         android:text="Género:"
+        android:labelFor="@id/album_gen_cr"
         android:layout_marginTop="30dp"/>
 
     <EditText
@@ -113,6 +118,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/white"
         android:text="Sello discográfico:"
+        android:labelFor="@id/album_reclab_cr"
         android:layout_marginTop="30dp"/>
 
     <EditText

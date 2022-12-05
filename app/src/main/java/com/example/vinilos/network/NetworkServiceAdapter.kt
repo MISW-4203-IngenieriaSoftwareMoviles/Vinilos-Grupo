@@ -7,7 +7,6 @@ import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.vinilos.models.*
-import com.example.vinilos.repositories.CollectorRepository
 import org.json.JSONArray
 import org.json.JSONObject
 import kotlin.coroutines.resume
