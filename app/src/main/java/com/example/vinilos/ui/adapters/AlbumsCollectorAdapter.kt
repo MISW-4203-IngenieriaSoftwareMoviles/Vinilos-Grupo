@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.core.net.toUri
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -13,6 +14,8 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.vinilos.R
 import com.example.vinilos.databinding.AlbumTrackItemBinding
 import com.example.vinilos.models.Album
+import com.example.vinilos.ui.AlbumFragmentDirections
+import com.example.vinilos.ui.AlbumsCollectorFragmentDirections
 
 class AlbumsCollectorAdapter : RecyclerView.Adapter<AlbumsCollectorAdapter.AlbumsCollectorViewHolder>() {
 
@@ -37,11 +40,11 @@ class AlbumsCollectorAdapter : RecyclerView.Adapter<AlbumsCollectorAdapter.Album
             it.album = albums[position]
         }
         holder.bind(albums[position])
-        //holder.viewDataBinding.root.setOnClickListener {
-            //val action = AlbumFragmentDirections.actionAlbumFragmentToDetailAlbumFragment(albums[position].albumId)
+        /*holder.viewDataBinding.root.setOnClickListener {
+            val action = AlbumsCollectorFragmentDirections.actionAlbumsCollectorFragmentToCreateAlbumFragment()
             // Navigate using that action
-            //holder.viewDataBinding.root.findNavController().navigate(action)
-        //}
+            holder.viewDataBinding.root.findNavController().navigate(action)
+        }*/
     }
 
     override fun getItemCount(): Int {
