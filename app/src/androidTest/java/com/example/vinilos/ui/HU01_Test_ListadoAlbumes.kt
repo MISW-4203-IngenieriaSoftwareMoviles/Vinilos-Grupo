@@ -60,12 +60,12 @@ class H001ListarAlbumes {
         Thread.sleep(5_000)
         val textView = onView(
             allOf(
-                withId(R.id.album_name), withText("Poeta del pueblo"),
-                withParent(withParent(IsInstanceOf.instanceOf(androidx.cardview.widget.CardView::class.java))),
+                withId(R.id.titulo_albumes), withText("Álbumes"),
+                withParent(withParent(IsInstanceOf.instanceOf(android.widget.FrameLayout::class.java))),
                 isDisplayed()
             )
         )
-        textView.check(matches(withText("Poeta del pueblo")))
+        textView.check(matches(withText("Álbumes")))
     }
 
     private fun childAtPosition(

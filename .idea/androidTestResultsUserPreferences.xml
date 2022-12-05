@@ -36,21 +36,7 @@
               <option name="preferredColumnWidths">
                 <map>
                   <entry key="Duration" value="90" />
-                  <entry key="Nexus_5_API_28" value="120" />
                   <entry key="Pixel_5_API_31" value="120" />
-                  <entry key="Tests" value="360" />
-                </map>
-              </option>
-            </AndroidTestResultsTableState>
-          </value>
-        </entry>
-        <entry key="-1989468446">
-          <value>
-            <AndroidTestResultsTableState>
-              <option name="preferredColumnWidths">
-                <map>
-                  <entry key="Duration" value="90" />
-                  <entry key="Pixel_2_API_30" value="120" />
                   <entry key="Tests" value="360" />
                 </map>
               </option>
@@ -63,7 +49,6 @@
               <option name="preferredColumnWidths">
                 <map>
                   <entry key="Duration" value="90" />
-                  <entry key="Nexus_5_API_28" value="120" />
                   <entry key="Pixel_5_API_31" value="120" />
                   <entry key="Tests" value="360" />
                 </map>
@@ -167,12 +152,14 @@
             </AndroidTestResultsTableState>
           </value>
         </entry>
+
         <entry key="-39378464">
           <value>
             <AndroidTestResultsTableState>
               <option name="preferredColumnWidths">
                 <map>
                   <entry key="Duration" value="90" />
+
                   <entry key="Nexus_5_API_28" value="120" />
 
                   <entry key="Pixel_5_API_31" value="120" />
@@ -182,9 +169,7 @@
             </AndroidTestResultsTableState>
           </value>
         </entry>
-
         <entry key="477464968">
-
           <value>
             <AndroidTestResultsTableState>
               <option name="preferredColumnWidths">
@@ -199,7 +184,7 @@
             </AndroidTestResultsTableState>
           </value>
         </entry>
-        <entry key="915270310">
+        <entry key="477464968">
           <value>
             <AndroidTestResultsTableState>
               <option name="preferredColumnWidths">
@@ -244,48 +229,6 @@
               <option name="preferredColumnWidths">
                 <map>
                   <entry key="Duration" value="90" />
-                  <entry key="Nexus_5_API_28" value="120" />
-                  <entry key="Pixel_5_API_31" value="120" />
-                  <entry key="Tests" value="360" />
-                </map>
-              </option>
-            </AndroidTestResultsTableState>
-          </value>
-        </entry>
-        <entry key="1327485688">
-          <value>
-            <AndroidTestResultsTableState>
-              <option name="preferredColumnWidths">
-                <map>
-                  <entry key="Duration" value="90" />
-                  <entry key="Nexus_5_API_28" value="120" />
-                  <entry key="Pixel_3a_API_33_x86_64" value="120" />
-                  <entry key="Tests" value="360" />
-                </map>
-              </option>
-            </AndroidTestResultsTableState>
-          </value>
-        </entry>
-        <entry key="1646525511">
-          <value>
-            <AndroidTestResultsTableState>
-              <option name="preferredColumnWidths">
-                <map>
-                  <entry key="Duration" value="90" />
-                  <entry key="Pixel_3a_API_33_x86_64" value="120" />
-                  <entry key="Tests" value="360" />
-                </map>
-              </option>
-            </AndroidTestResultsTableState>
-          </value>
-        </entry>
-        <entry key="1820768592">
-          <value>
-            <AndroidTestResultsTableState>
-              <option name="preferredColumnWidths">
-                <map>
-                  <entry key="Duration" value="90" />
-                  <entry key="Nexus_5_API_28" value="120" />
                   <entry key="Pixel_5_API_31" value="120" />
                   <entry key="Tests" value="360" />
                 </map>
