@@ -75,12 +75,12 @@ class HU02TestDetalleAlbum {
         Thread.sleep(3_000)
         val textView = onView(
             allOf(
-                withId(R.id.album_gen_det), withText("Salsa"),
+                withId(R.id.title_rel_date), withText("Fecha de lanzamiento:"),
                 withParent(withParent(IsInstanceOf.instanceOf(android.view.ViewGroup::class.java))),
                 isDisplayed()
             )
         )
-        textView.check(matches(withText("Salsa")))
+        textView.check(matches(withText("Fecha de lanzamiento:")))
     }
 
     private fun childAtPosition(

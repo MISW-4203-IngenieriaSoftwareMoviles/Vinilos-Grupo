@@ -63,12 +63,12 @@ class HU03_Test_ListadoArtistas {
         Thread.sleep(3_000)
         val textView = onView(
             allOf(
-                withId(R.id.performer_name), withText("The Beatles"),
-                withParent(withParent(IsInstanceOf.instanceOf(androidx.cardview.widget.CardView::class.java))),
+                withId(R.id.titulo_performer), withText("Artistas"),
+                withParent(withParent(IsInstanceOf.instanceOf(android.widget.FrameLayout::class.java))),
                 isDisplayed()
             )
         )
-        textView.check(matches(withText("The Beatles")))
+        textView.check(matches(withText("Artistas")))
     }
 
     private fun childAtPosition(
