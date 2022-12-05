@@ -31,7 +31,8 @@
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="60dp"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:contentDescription="Foto artista" />
 
             <TextView
                 android:id="@+id/performer_name"
