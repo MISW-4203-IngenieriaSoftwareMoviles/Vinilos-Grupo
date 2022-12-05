@@ -56,14 +56,24 @@
             android:name="id"
             app:argType="integer" />
     </fragment>
+
+    <fragment
+        android:id="@+id/detailCollectorFragment"
+        android:name="com.example.vinilos.ui.DetailCollectorFragment"
+        android:label="detail_collector_fragment"
+        tools:layout="@layout/detail_collector_fragment" >
+        <argument
+            android:name="id"
+            app:argType="integer" />
+    </fragment>
     <fragment
         android:id="@+id/collectorFragment"
         android:name="com.example.vinilos.ui.CollectorFragment"
         android:label="collector_fragment"
         tools:layout="@layout/collector_fragment" >
-<!--        <action-->
-<!--            android:id="@+id/action_collectorFragment_to_detailCollectorFragment"-->
-<!--            app:destination="@id/detailCollectorFragment" />-->
+        <action
+                android:id="@+id/action_collectorFragment_to_detailCollectorFragment"
+                app:destination="@id/detailCollectorFragment" />
     </fragment>
     <fragment
         android:id="@+id/performerFragment"

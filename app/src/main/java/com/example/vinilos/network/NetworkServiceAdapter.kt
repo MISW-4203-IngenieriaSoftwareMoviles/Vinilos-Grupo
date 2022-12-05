@@ -8,6 +8,7 @@ import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.vinilos.models.*
+import com.example.vinilos.repositories.CollectorRepository
 import org.json.JSONArray
 import org.json.JSONObject
 import kotlin.coroutines.resume
@@ -84,6 +85,31 @@ class NetworkServiceAdapter constructor(context: Context) {
                 })
         )
     }
+
+    suspend fun getCollector(
+        id: Int) = suspendCoroutine<Collector> { cont->
+        requestQueue.add(
+            getRequestCollector("collectors/$id",
+                Response.Listener<String> { response ->
+                    val item = JSONObject(response)
+                    val collector = Collector(
+                        id = item.getInt("id"),
+                        name = item.getString("name"),
+                        telephone = item.getString("telephone"),
+                        email = item.getString("email")
+
+                    )
+                    cont.resume(collector)
+                },
+                Response.ErrorListener {
+                    cont.resumeWithException(it)
+                })
+        )
+    }
+
+
+
+
 
     suspend fun getCollectors() = suspendCoroutine<List<Collector>> { cont->
         val list = mutableListOf<Collector>()
@@ -236,6 +262,14 @@ class NetworkServiceAdapter constructor(context: Context) {
     }
 
     private fun getRequestCollectors(
+        path: String,
+        responseListener: Response.Listener<String>,
+        errorListener: Response.ErrorListener
+    ): StringRequest {
+        return StringRequest(Request.Method.GET, BASE_URL + path, responseListener, errorListener)
+    }
+
+    private fun getRequestCollector(
         path: String,
         responseListener: Response.Listener<String>,
         errorListener: Response.ErrorListener

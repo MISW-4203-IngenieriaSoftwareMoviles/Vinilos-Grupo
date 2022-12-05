@@ -63,12 +63,12 @@ class HU05_Test_ListadoColeccionista {
         Thread.sleep(3_000)
         val textView = onView(
             allOf(
-                withId(R.id.collector_name), withText("Manolo Bellon"),
-                withParent(withParent(IsInstanceOf.instanceOf(androidx.cardview.widget.CardView::class.java))),
+                withId(R.id.titulo_coleccionistas), withText("Coleccionistas"),
+                withParent(withParent(IsInstanceOf.instanceOf(android.widget.FrameLayout::class.java))),
                 isDisplayed()
             )
         )
-        textView.check(matches(withText("Manolo Bellon")))
+        textView.check(matches(withText("Coleccionistas")))
     }
 
     private fun childAtPosition(
