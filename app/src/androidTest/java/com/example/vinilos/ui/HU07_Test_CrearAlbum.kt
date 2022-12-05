@@ -16,59 +16,59 @@ import org.hamcrest.Matcher
 import org.hamcrest.Matchers.`is`
 import org.hamcrest.Matchers.allOf
 import org.hamcrest.TypeSafeMatcher
-import org.hamcrest.core.IsInstanceOf
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
 @LargeTest
 @RunWith(AndroidJUnit4::class)
-class HU03_Test_ListadoArtistas {
+class HU07_Test_CrearAlbum {
 
     @Rule
     @JvmField
     var mActivityScenarioRule = ActivityScenarioRule(MainActivity::class.java)
 
     @Test
-    fun listarArtistasTest() {
+    fun hU07_Test_CrearAlbum() {
+        Thread.sleep(2_000)
         val materialButton = onView(
             allOf(
-                withId(R.id.btn_visitante), withText("SOY VISITANTE"),
+                withId(R.id.btn_coleccionista), withText("SOY COLECCIONISTA"),
                 childAtPosition(
                     childAtPosition(
                         withClassName(`is`("android.widget.FrameLayout")),
                         0
                     ),
-                    5
+                    3
                 ),
                 isDisplayed()
             )
         )
         materialButton.perform(click())
-        Thread.sleep(3_000)
+        Thread.sleep(2_000)
         val materialButton2 = onView(
             allOf(
-                withId(R.id.btn_artistas), withText("Artistas"),
+                withId(R.id.btn_crear_album), withText("CREAR NUEVO ÁLBUM"),
                 childAtPosition(
                     childAtPosition(
-                        withClassName(`is`("android.widget.LinearLayout")),
-                        2
+                        withClassName(`is`("android.widget.FrameLayout")),
+                        0
                     ),
-                    2
+                    4
                 ),
                 isDisplayed()
             )
         )
         materialButton2.perform(click())
-        Thread.sleep(3_000)
+        Thread.sleep(2_000)
         val textView = onView(
             allOf(
-                withId(R.id.titulo_performer), withText("Artistas"),
-                withParent(withParent(IsInstanceOf.instanceOf(android.widget.FrameLayout::class.java))),
+                withId(R.id.title_name_album_cr), withText("Nombre:"),
+                withParent(withParent(withId(R.id.fragmentContainerView))),
                 isDisplayed()
             )
         )
-        textView.check(matches(withText("Artistas")))
+        textView.check(matches(withText("Nombre:")))
     }
 
     private fun childAtPosition(
