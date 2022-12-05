@@ -53,6 +53,11 @@ cd Vinilos-Grupo12
 
 **2.** Ejecutar cada una de las siguientes seleccionando cada prueba con click derecho:
 
-    Run 'H001_Test_Album_Principal'
-    Run 'HU01_Test_ListadoAlbumes'
-    Run 'HU02_Test_DetalleAlbum'
+- HU01_Test_ListadoAlbumes
+- HU01_Test_PaginaPrincipal
+- HU02_Test_DetalleAlbum
+- HU03_Test_ListadoArtistas
+- HU04_Test_DetalleArtista
+- HU05_Test_ListadoColeccionista
+- HU06_Test_DetalleColeccionista
+- HU07_Test_CrearAlbum
