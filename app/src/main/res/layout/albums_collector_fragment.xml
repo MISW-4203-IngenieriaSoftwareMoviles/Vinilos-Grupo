@@ -53,6 +53,15 @@
             android:layout_marginRight="10dp"
             android:text="Crear nuevo álbum" />
 
+        <Button
+            android:id="@+id/btn_asociar_track"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cornerRadius="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:text="Asociar Track" />
+
         <Space
             android:layout_width="match_parent"
             android:layout_height="20dp" />
@@ -71,7 +80,7 @@
             android:layout_height="10dp" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/fragments_rv"
+            android:id="@+id/recyclerViewAssociateTrack"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:listitem="@layout/album_track_item" />
