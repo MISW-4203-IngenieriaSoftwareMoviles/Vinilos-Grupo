@@ -3,6 +3,7 @@
   <component name="AndroidTestResultsUserPreferences">
     <option name="androidTestResultsTableState">
       <map>
+
         <entry key="-2120882849">
           <value>
             <AndroidTestResultsTableState>
@@ -174,6 +175,7 @@
               <option name="preferredColumnWidths">
                 <map>
                   <entry key="Duration" value="90" />
+
                   <entry key="Nexus_5_API_28" value="120" />
                   <entry key="Pixel_3a_API_33_x86_64" value="120" />
                   <entry key="Tests" value="360" />
@@ -188,9 +190,6 @@
               <option name="preferredColumnWidths">
                 <map>
                   <entry key="Duration" value="90" />
-                  <entry key="Pixel_5_API_31" value="120" />
-                  <entry key="Tests" value="360" />
-                </map>
               </option>
             </AndroidTestResultsTableState>
           </value>
@@ -203,7 +202,7 @@
                   <entry key="Duration" value="90" />
                   <entry key="Nexus_5_API_28" value="120" />
 
-                 <entry key="Pixel_5_API_31" value="120" />
+                  <entry key="Pixel_5_API_31" value="120" />
                   <entry key="Tests" value="360" />
                 </map>
               </option>
@@ -250,6 +249,7 @@
             </AndroidTestResultsTableState>
           </value>
         </entry>
+
       </map>
     </option>
   </component>
