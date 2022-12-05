@@ -24,7 +24,8 @@
             android:id="@+id/imageView"
             android:layout_width="match_parent"
             android:layout_height="300dp"
-            android:src="@mipmap/logo_vinilos_foreground" />
+            android:src="@mipmap/logo_vinilos_foreground"
+            android:contentDescription="Logo principal" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -70,7 +71,8 @@
             android:id="@+id/imageMusic"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/image_music" />
+            android:src="@drawable/image_music"
+            android:contentDescription="Imagen de figuras musicales" />
 
 
     </LinearLayout>
