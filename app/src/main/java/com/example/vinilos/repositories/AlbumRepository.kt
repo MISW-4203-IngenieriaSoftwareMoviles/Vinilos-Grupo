@@ -17,8 +17,8 @@ class AlbumRepository(val application: Application) {
         return NetworkServiceAdapter.getInstance(application).getAlbum(id)
     }
 
-    suspend fun refreshDataAssociateTrack(track: JSONObject): Track {
+    suspend fun refreshDataAssociateTrack(track: JSONObject, idAlbum: Int): Track {
         //Determinar la fuente de datos que se va a utilizar. Si es necesario consultar la red, ejecutar el siguiente código
-        return NetworkServiceAdapter.getInstance(application).associateTrack(track)
+        return NetworkServiceAdapter.getInstance(application).associateTrack(track, idAlbum)
     }
 }

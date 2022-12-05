@@ -33,7 +33,6 @@
                     android:layout_width="60dp"
                     android:layout_height="match_parent" />
 
-
                 <TextView
                     android:id="@+id/albumtr_name"
                     android:layout_width="wrap_content"
@@ -42,17 +41,6 @@
                     android:textAlignment="viewStart"
                     android:textColor="@color/white"
                     android:layout_marginTop="10dp"/>
-
-                <TextView
-                    android:id="@+id/add_track"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="+"
-                    android:textAlignment="viewEnd"
-                    android:textColor="@color/white"
-                    android:textSize="30sp"
-                    android:layout_marginRight="15dp"
-                    android:textStyle="bold" />
 
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>

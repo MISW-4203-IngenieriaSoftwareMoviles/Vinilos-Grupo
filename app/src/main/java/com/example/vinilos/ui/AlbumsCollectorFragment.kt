@@ -23,6 +23,7 @@ class AlbumsCollectorFragment : Fragment() {
     private var _binding: AlbumsCollectorFragmentBinding? = null
     private val binding get() = _binding!!
     private lateinit var recyclerView: RecyclerView
+    //private lateinit var viewModel: AlbumViewModel
     private lateinit var viewModel: AlbumViewModel
     private var viewModelAdapter: AlbumsCollectorAdapter? = null
 
@@ -37,12 +38,16 @@ class AlbumsCollectorFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        recyclerView = binding.fragmentsRv
+        recyclerView = binding.recyclerViewAssociateTrack
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = viewModelAdapter
 
         binding.btnCrearAlbum.setOnClickListener {
             findNavController().navigate(R.id.createAlbumFragment)
+        }
+
+        binding.btnAsociarTrack.setOnClickListener {
+            findNavController().navigate(R.id.associateTrackFragment)
         }
     }
 

@@ -94,8 +94,8 @@
         android:label="albums_collector_fragment"
         tools:layout="@layout/albums_collector_fragment" >
         <action
-            android:id="@+id/action_albumsCollectorFragment_to_createAlbumFragment"
-            app:destination="@id/createAlbumFragment" />
+            android:id="@+id/action_albumsCollectorFragment_to_associateTrack"
+            app:destination="@id/associateTrackFragment" />
 
     </fragment>
     <fragment
@@ -106,7 +106,16 @@
         <action
             android:id="@+id/action_createAlbumFragment_to_albumsCollectorFragment"
             app:destination="@id/albumsCollectorFragment" />
+    </fragment>
 
+    <fragment
+        android:id="@+id/associateTrackFragment"
+        android:name="com.example.vinilos.ui.AssociateTrackFragment"
+        android:label="associate_track_fragment"
+        tools:layout="@layout/associate_track_fragment" >
+        <argument
+            android:name="id"
+            app:argType="integer" />
     </fragment>
 
 
